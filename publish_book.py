@@ -1,12 +1,12 @@
 from pathlib import Path
 
-from reportlab.platypus import SimpleDocTemplate, Paragraph
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Flowable
 
 
 class Book:
     def __init__(self, path: Path) -> None:
         self.path = path
-        self.flowables = []
+        self.flowables: list[Flowable] = []
 
     def add_paragraph(self, text):
         self.flowables.append(Paragraph(text))

@@ -10,7 +10,7 @@ from markdown.treeprocessors import Treeprocessor
 class BlenderBlockProcessor(Treeprocessor):
     def __init__(self, width: int, height: int):
         super().__init__()
-        self.blocks = []
+        self.blocks: list[BlenderBlock] = []
         self.width = width
         self.height = height
         
@@ -44,7 +44,7 @@ class BlenderBlock:
     def read(cls,
              file: typing.IO,
              width: int = 40,
-             height: int = 8) -> list[typing.Self]:
+             height: int = 8) -> list['BlenderBlock']:
         extension = BlenderBlockExtension(width, height)
         Markdown(extensions=[extension]).convert(file.read())
         blocks = extension.processor.blocks

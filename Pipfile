@@ -12,6 +12,7 @@ svgwrite = "*"
 svglib = "*"
 cairosvg = "*"
 markdown = "*"
+mypy = "*"
 
 [dev-packages]
 

@@ -77,7 +77,7 @@ class BlenderBlock:
                          (width, line_height * (row_count * 4 - 1)),
                          fill_opacity=0,
                          stroke='black'))
-        column_letters = [[] for _ in range(column_count)]
+        column_letters: list[list[str]] = [[] for _ in range(column_count)]
         for i, line in enumerate(self.lines):
             lower_line = line.lower()
             blanks = re.sub(r'[a-z]', '_', lower_line)

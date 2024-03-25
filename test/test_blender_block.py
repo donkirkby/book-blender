@@ -67,59 +67,70 @@ def test_text_dimensions():
 
 
 def test_draw(image_differ):
-    expected_drawing = Drawing(size=(440, 200))
-    grey = 'rgb(200, 200, 200)'
-    expected_drawing.add(Rect((80, 0),
-                              (70, 200),
+    sp = ' '
+    nbsp = '\xa0'
+    expected_drawing = Drawing(size=(380, 210))
+    grey = 'rgb(240, 240, 240)'
+    expected_drawing.add(Rect((70, 0),
+                              (60, 200),
                               fill=grey))
-    expected_drawing.add(Rect((220, 0),
-                              (70, 200),
+    expected_drawing.add(Rect((190, 0),
+                              (60, 200),
                               fill=grey))
-    expected_drawing.add(Rect((360, 0),
+    expected_drawing.add(Rect((310, 0),
                               (70, 200),
                               fill=grey))
     expected_drawing.add(Rect((0, 0),
-                              (440, 140),
+                              (380, 140),
                               fill_opacity=0,
                               stroke='black'))
     expected_drawing.add(Rect((0, 0),
-                              (440, 200),
+                              (380, 200),
                               fill_opacity=0,
                               stroke='black'))
-    expected_drawing.add(Text('____ ___ _ "______" ____.',
+    expected_drawing.add(Text('           "      "     .'.replace(sp, nbsp),
                               (10, 40),
                               font_family='Courier',
-                              font_size=20,
-                              letter_spacing=2))
-    expected_drawing.add(Text('amry adh a\xa0 eilltt\xa0 ablm',
+                              font_size=20))
+    expected_drawing.add(Text('---- --- -  ------  ---- '.replace(sp, nbsp),
+                              (10, 47),
+                              font_family='Courier',
+                              font_size=20))
+    expected_drawing.add(Text('amry adh a  eilltt  ablm'.replace(sp, nbsp),
                               (10, 60),
                               font_family='Courier',
-                              font_size=20,
-                              letter_spacing=2))
-    expected_drawing.add(Text('___ ______ ___ _____ __ ____.',
+                              font_size=20))
+    expected_drawing.add(Text('                            .'.replace(sp, nbsp),
                               (10, 100),
                               font_family='Courier',
-                              font_size=20,
-                              letter_spacing=2))
+                              font_size=20))
+    expected_drawing.add(Text('--- ------ --- ----- -- ----',
+                              (10, 107),
+                              font_family='Courier',
+                              font_size=20))
     expected_drawing.add(Text('ist ceeefl asw ehitw as nosw',
                               (10, 120),
                               font_family='Courier',
-                              font_size=20,
-                              letter_spacing=2))
+                              font_size=20))
     expected_drawing.add(Text('iaryfhadca waitthetelambsnow',
                               (10, 160),
                               font_family='Courier',
-                              font_size=20,
-                              letter_spacing=2))
+                              font_size=20))
     expected_drawing.add(Text('mts\xa0 lee e\xa0 ls wli \xa0 as',
                               (10, 180),
                               font_family='Courier',
-                              font_size=20,
-                              letter_spacing=2))
+                              font_size=20))
+    expected_drawing.add(Text('13',
+                              (370, 180),
+                              font_family='Courier',
+                              text_anchor='end',
+                              font_size=30))
     expected_svg = expected_drawing.tostring()
 
-    block = BlenderBlock(('Mary had a "little" lamb.     ',
-                          'Its fleece was white as snow. '))
+    block = BlenderBlock(lines=('Mary had a "little" lamb.     ',
+                                'Its fleece was white as snow. '),
+                         page=13,
+                         scale=1.0)
     actual_svg = block.as_svg()
 
     image_differ.assert_equal(LiveSvg(SvgDiagram(actual_svg)),

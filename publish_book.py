@@ -1,26 +1,39 @@
 from pathlib import Path
 
-from reportlab.platypus import SimpleDocTemplate, Paragraph, Flowable
+from reportlab.platypus import BaseDocTemplate, Frame, PageTemplate
+
+from blender_block import BlenderBlock
+from svg_diagram import SvgDiagram
 
 
-class Book:
-    def __init__(self, path: Path) -> None:
-        self.path = path
-        self.flowables: list[Flowable] = []
-
-    def add_paragraph(self, text):
-        self.flowables.append(Paragraph(text))
-
-    def build(self):
-        doc = SimpleDocTemplate(str(self.path))
-        doc.build(self.flowables)
+def write_blocks(blocks, out_path):
+    doc = BaseDocTemplate(str(out_path))
+    # Two Columns
+    # noinspection PyUnresolvedReferences
+    frame1 = Frame(doc.leftMargin,
+                   doc.bottomMargin,
+                   doc.width / 2 - 6,
+                   doc.height,
+                   id='col1')
+    # noinspection PyUnresolvedReferences
+    frame2 = Frame(doc.leftMargin + doc.width / 2 + 6,
+                   doc.bottomMargin,
+                   doc.width / 2 - 6,
+                   doc.height,
+                   id='col2')
+    doc.addPageTemplates([PageTemplate(id='TwoCol', frames=[frame1, frame2]), ])
+    doc.build([SvgDiagram(block.as_svg()).to_reportlab()
+               for block in blocks])
 
 
 def main():
-    filename = 'foo.pdf'
-    doc = SimpleDocTemplate(filename)
-    flowables = [Paragraph('Foo'), Paragraph('Bar')]
-    doc.build(flowables)
+    in_path = Path(__file__).parent / 'books' / 'luck.md'
+    name_base = in_path.with_suffix('.pdf').name
+    out_path = Path(__file__).parent / 'docs' / name_base
+    with in_path.open('r') as f:
+        blocks = BlenderBlock.read(f, width=30, height=6, scale=0.58)
+
+    write_blocks(blocks, out_path)
 
 
 if __name__ == '__main__':

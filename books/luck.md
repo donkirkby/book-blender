@@ -1,3 +1,8 @@
+---
+title: Luck
+subtitle: by Mark Twain
+---
+
 It was at a banquet in London in honor of one of the two or three conspicuously illustrious English military names of
 this generation. For reasons which will presently appear, I will withhold his real name and titles, and call him
 Lieutenant General Lord Arthur Scoresby, V.C., K.C.B., etc., etc., etc. What a fascination there is in a renowned name!

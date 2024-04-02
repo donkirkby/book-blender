@@ -22,7 +22,7 @@ def write_blocks(blocks: typing.Sequence[BlenderBlock], out_path: Path) -> None:
 
 
 def main() -> None:
-    in_path = Path(__file__).parent / 'books' / 'luck.md'
+    in_path = Path(__file__).parent / 'books' / 'feast-of-nemesis.md'
     name_base = in_path.with_suffix('.pdf').name
     out_path = Path(__file__).parent / 'docs' / name_base
     with in_path.open('r') as f:

@@ -1,9 +1,10 @@
 import re
 import typing
-from itertools import zip_longest
+from itertools import zip_longest, chain
 from textwrap import wrap
 
 from markdown import Extension, Markdown
+from markdown.extensions.meta import MetaExtension
 from markdown.treeprocessors import Treeprocessor
 from svgwrite import Drawing
 from svgwrite.container import Group
@@ -14,12 +15,16 @@ MARGIN = round(LETTER_WIDTH / 1.2)
 
 
 class BlenderBlockProcessor(Treeprocessor):
-    def __init__(self, width: int, height: int, scale: float | None = None):
+    def __init__(self,
+                 width: int,
+                 height: int,
+                 scale: float | None = None) -> None:
         super().__init__()
         self.blocks: list[BlenderBlock] = []
         self.width = width
         self.height = height
         self.scale = scale
+        self.markdown: Markdown | None = None
 
     def run(self, root):
         for child in root:
@@ -30,14 +35,22 @@ class BlenderBlockProcessor(Treeprocessor):
         lines = (line + ' '*(self.width - len(line))
                  for text in texts
                  for line in wrap(text, self.width))
+        metadata = getattr(self.markdown, 'Meta', {})
+        titles = metadata.get('title', [])
+        subtitles = metadata.get('subtitle', [])
+        if titles:
+            lines = chain((' ' * self.width, ), lines)
         groups = zip_longest(*([lines] * self.height))
-        for page, group in enumerate(groups, 1):
+        for group in groups:
             group_lines = (line
                            for line in group
                            if line is not None)
             self.blocks.append(BlenderBlock(tuple(group_lines),
-                                            page,
                                             scale=self.scale))
+        if titles and self.blocks:
+            self.blocks[0].title = titles[0]
+        if subtitles and self.blocks:
+            self.blocks[0].subtitle = subtitles[0]
 
 
 class BlenderBlockExtension(Extension):
@@ -46,6 +59,8 @@ class BlenderBlockExtension(Extension):
         self.processor = BlenderBlockProcessor(width, height, scale)
 
     def extendMarkdown(self, md):
+        md.registerExtension(self)
+        self.processor.markdown = md
         md.treeprocessors.register(self.processor,
                                    'blender_block',
                                    50)
@@ -58,9 +73,12 @@ class BlenderBlock:
              width: int = 40,
              height: int = 8,
              scale: float | None = None) -> list['BlenderBlock']:
-        extension = BlenderBlockExtension(width, height, scale)
-        Markdown(extensions=[extension]).convert(file.read())
-        blocks = extension.processor.blocks
+        blender_extension = BlenderBlockExtension(width, height, scale)
+        meta_extension = MetaExtension()
+
+        Markdown(extensions=[blender_extension,
+                             meta_extension]).convert(file.read())
+        blocks = blender_extension.processor.blocks
         return blocks
 
     def __init__(self,
@@ -73,6 +91,8 @@ class BlenderBlock:
             self.scale = 0.5
         else:
             self.scale = scale
+        self.title: str | None = None
+        self.subtitle: str | None = None
         self.width = self.column_count * LETTER_WIDTH + 2 * MARGIN
         self.height = LINE_HEIGHT * (self.row_count * 4 + 2)
 
@@ -99,6 +119,22 @@ class BlenderBlock:
             group.add(drawing.rect((i * LETTER_WIDTH + MARGIN, LINE_HEIGHT),
                                    (shade_width, self.height - LINE_HEIGHT * 1.5),
                                    fill='rgb(240, 240, 240)'))
+
+        if self.title:
+            group.add(drawing.text(self.title,
+                                   (self.width / 2,
+                                    LINE_HEIGHT*2.5),
+                                   text_anchor='middle',
+                                   font_family='Helvetica',
+                                   font_size=LINE_HEIGHT*1.5))
+        if self.subtitle:
+            group.add(drawing.text(self.subtitle,
+                                   (self.width / 2,
+                                    LINE_HEIGHT*3.5),
+                                   text_anchor='middle',
+                                   font_family='Helvetica',
+                                   font_size=LINE_HEIGHT))
+
         column_letters: list[list[str]] = [[] for _ in range(self.column_count)]
         nbsp = '\xa0'
         for i, line in enumerate(self.lines):

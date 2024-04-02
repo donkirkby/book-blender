@@ -71,23 +71,15 @@ def test_draw(image_differ):
     nbsp = '\xa0'
     expected_drawing = Drawing(size=(380, 210))
     grey = 'rgb(240, 240, 240)'
-    expected_drawing.add(Rect((70, 0),
-                              (60, 200),
+    expected_drawing.add(Rect((70, 20),
+                              (60, 170),
                               fill=grey))
-    expected_drawing.add(Rect((190, 0),
-                              (60, 200),
+    expected_drawing.add(Rect((190, 20),
+                              (60, 170),
                               fill=grey))
-    expected_drawing.add(Rect((310, 0),
-                              (70, 200),
+    expected_drawing.add(Rect((310, 20),
+                              (60, 170),
                               fill=grey))
-    expected_drawing.add(Rect((0, 0),
-                              (380, 140),
-                              fill_opacity=0,
-                              stroke='black'))
-    expected_drawing.add(Rect((0, 0),
-                              (380, 200),
-                              fill_opacity=0,
-                              stroke='black'))
     expected_drawing.add(Text('           "      "     .'.replace(sp, nbsp),
                               (10, 40),
                               font_family='Courier',
@@ -120,11 +112,11 @@ def test_draw(image_differ):
                               (10, 180),
                               font_family='Courier',
                               font_size=20))
-    expected_drawing.add(Text('13',
-                              (370, 180),
+    expected_drawing.add(Text('* * *',
+                              (190, 140),
                               font_family='Courier',
-                              text_anchor='end',
-                              font_size=30))
+                              text_anchor='middle',
+                              font_size=20))
     expected_svg = expected_drawing.tostring()
 
     block = BlenderBlock(lines=('Mary had a "little" lamb.     ',

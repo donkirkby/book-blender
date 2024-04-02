@@ -30,8 +30,8 @@ and sweet, and lovable, and guileless; and so it was exceedingly painful to see 
 image, and deliver himself of answers which were veritably miraculous for stupidity and ignorance. All the compassion in
 me was aroused in his behalf. I said to myself, when he comes to be examined again, he will be flung over, of course; so
 it will be simply a harmless act of charity to ease his fall as much as I can. I took him aside, and found that he knew
-a little of Cæsar’s history; and as he didn’t know anything else, I went to work and drilled him like a galley slave on
-a certain line of stock questions concerning Cæsar which I knew would be used. If you’ll believe me, he went through
+a little of Caesar’s history; and as he didn’t know anything else, I went to work and drilled him like a galley slave on
+a certain line of stock questions concerning Caesar which I knew would be used. If you’ll believe me, he went through
 with flying colors on examination day! He went through on that purely superficial “cram,” and got compliments too, while
 others, who knew a thousand times more than he, got plucked. By some strangely lucky accident—an accident not likely to
 happen twice in a century—he was asked no question outside of the narrow limits of his drill.
@@ -86,7 +86,7 @@ regiment would come browsing around there at such a time. It must be the entire 
 game was detected and blocked; so they turned tail, and away they went, pell-mell, over the hill and down into the
 field, in wild confusion, and we after them; they themselves broke the solid Russian center in the field, and tore
 through, and in no time there was the most tremendous rout you ever saw, and the defeat of the allies was turned into a
-sweeping and splendid victory! Marshal Canrobert looked on, dizzy with astonishment, admiration,and delight; and sent
+sweeping and splendid victory! Marshal Canrobert looked on, dizzy with astonishment, admiration, and delight; and sent
 right off for Scoresby, and hugged him, and decorated him on the field, in presence of all the armies!
 
 And what was Scoresby’s blunder that time? Merely the mistaking his right hand for his left—that was all. An order had

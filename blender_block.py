@@ -8,6 +8,10 @@ from markdown.treeprocessors import Treeprocessor
 from svgwrite import Drawing
 from svgwrite.container import Group
 
+LINE_HEIGHT = 20
+LETTER_WIDTH = 12
+MARGIN = round(LETTER_WIDTH / 1.2)
+
 
 class BlenderBlockProcessor(Treeprocessor):
     def __init__(self, width: int, height: int, scale: float | None = None):
@@ -69,49 +73,47 @@ class BlenderBlock:
             self.scale = 0.5
         else:
             self.scale = scale
+        self.width = self.column_count * LETTER_WIDTH + 2 * MARGIN
+        self.height = LINE_HEIGHT * (self.row_count * 4 + 2)
 
     def as_svg(self) -> str:
-        column_count = len(self.lines[0])
-        row_count = len(self.lines)
-        letter_width = 12
-        line_height = 20
-        margin = round(letter_width / 1.2)
-        width = column_count * letter_width + 2 * margin
-        height = line_height * (row_count * 4 + 2)
-        drawing = Drawing(size=(width*self.scale, height*self.scale + margin))
+        drawing = Drawing(size=(self.width * self.scale, self.height * self.scale + MARGIN))
+        self.draw(drawing)
+
+        return drawing.tostring()
+
+    @property
+    def row_count(self) -> int:
+        return len(self.lines)
+
+    @property
+    def column_count(self) -> int:
+        return len(self.lines[0])
+
+    def draw(self, drawing: Drawing) -> Group:
         group = Group()
         drawing.add(group)
         group.scale(self.scale)
-        for i in range(5, column_count, 10):
-            shade_width = 5 * letter_width
-            if i + 5 == column_count:
-                shade_width += margin
-            group.add(drawing.rect((i * letter_width + margin, 0),
-                                   (shade_width, height),
+        for i in range(5, self.column_count, 10):
+            shade_width = 5 * LETTER_WIDTH
+            group.add(drawing.rect((i * LETTER_WIDTH + MARGIN, LINE_HEIGHT),
+                                   (shade_width, self.height - LINE_HEIGHT * 1.5),
                                    fill='rgb(240, 240, 240)'))
-        group.add(drawing.rect((0, 0),
-                               (width, height),
-                               fill_opacity=0,
-                               stroke='black'))
-        group.add(drawing.rect((0, 0),
-                               (width, line_height * (row_count * 3 + 1)),
-                               fill_opacity=0,
-                               stroke='black'))
-        column_letters: list[list[str]] = [[] for _ in range(column_count)]
+        column_letters: list[list[str]] = [[] for _ in range(self.column_count)]
         nbsp = '\xa0'
         for i, line in enumerate(self.lines):
             lower_line = line.lower()
             blanks = re.sub(r'[a-z]', '-', lower_line)
             blanks = re.sub(r'[^\-]', nbsp, blanks)
             group.add(drawing.text(blanks,
-                                   (margin, (i*3+2+0.35)*line_height),
+                                   (MARGIN, (i * 3 + 2 + 0.35) * LINE_HEIGHT),
                                    font_family='Courier',
-                                   font_size=line_height))
+                                   font_size=LINE_HEIGHT))
             punctuation = re.sub(r'[a-z ]', nbsp, lower_line)
             group.add(drawing.text(punctuation,
-                                   (margin, (i*3+2)*line_height),
+                                   (MARGIN, (i * 3 + 2) * LINE_HEIGHT),
                                    font_family='Courier',
-                                   font_size=line_height))
+                                   font_size=LINE_HEIGHT))
             chars = list(re.sub(r'[^a-z]', nbsp, lower_line))
             for j, char in enumerate(chars):
                 column_letters[j].append(char)
@@ -120,24 +122,24 @@ class BlenderBlock:
                 chars[start:end] = sorted(chars[start:end])
             sorted_line = ''.join(chars)
             group.add(drawing.text(sorted_line,
-                                   (margin, (i*3+3)*line_height),
+                                   (MARGIN, (i * 3 + 3) * LINE_HEIGHT),
                                    font_family='Courier',
-                                   font_size=line_height))
+                                   font_size=LINE_HEIGHT))
         for column in column_letters:
             column.sort()
-        for i in range(row_count):
+        for i in range(self.row_count):
             row_letters = ''.join(column[i] for column in column_letters)
             group.add(drawing.text(row_letters,
-                                   (margin, (row_count*3+2+i)*line_height),
+                                   (MARGIN,
+                                    (self.row_count * 3 + 2 + i) * LINE_HEIGHT),
                                    font_family='Courier',
-                                   font_size=line_height))
-        if self.page is not None:
-            group.add(drawing.text(str(self.page),
-                                   (width-margin, (row_count*4+1)*line_height),
-                                   font_family='Courier',
-                                   font_size=line_height*1.5,
-                                   text_anchor='end'))
-
+                                   font_size=LINE_HEIGHT))
+        group.add(drawing.text('* * *',
+                               (self.width / 2,
+                                (self.row_count * 3 + 1) * LINE_HEIGHT),
+                               text_anchor='middle',
+                               font_family='Courier',
+                               font_size=LINE_HEIGHT))
         # svglib trims leading nbsps when converting to ReportLab drawing.
         for element in group.elements:
             text = getattr(element, 'text', None)
@@ -147,6 +149,6 @@ class BlenderBlock:
             indent = len(text) - len(stripped)
             if indent:
                 element.text = stripped
-                element.translate(letter_width*indent)
+                element.translate(LETTER_WIDTH * indent)
 
-        return drawing.tostring()
+        return group

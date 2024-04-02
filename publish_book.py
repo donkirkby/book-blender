@@ -1,32 +1,27 @@
+import typing
+from itertools import zip_longest
 from pathlib import Path
 
-from reportlab.platypus import BaseDocTemplate, Frame, PageTemplate
+from reportlab.lib.units import inch
+from reportlab.platypus import SimpleDocTemplate
 
 from blender_block import BlenderBlock
+from block_pair import BlockPair
 from svg_diagram import SvgDiagram
 
 
-def write_blocks(blocks, out_path):
-    doc = BaseDocTemplate(str(out_path))
-    # Two Columns
-    # noinspection PyUnresolvedReferences
-    frame1 = Frame(doc.leftMargin,
-                   doc.bottomMargin,
-                   doc.width / 2 - 6,
-                   doc.height,
-                   id='col1')
-    # noinspection PyUnresolvedReferences
-    frame2 = Frame(doc.leftMargin + doc.width / 2 + 6,
-                   doc.bottomMargin,
-                   doc.width / 2 - 6,
-                   doc.height,
-                   id='col2')
-    doc.addPageTemplates([PageTemplate(id='TwoCol', frames=[frame1, frame2]), ])
-    doc.build([SvgDiagram(block.as_svg()).to_reportlab()
-               for block in blocks])
+def write_blocks(blocks: typing.Sequence[BlenderBlock], out_path: Path) -> None:
+    doc = SimpleDocTemplate(str(out_path),
+                            leftMargin=inch * 0.75,
+                            rightMargin=inch * 0.75)
+
+    blocks_iter = iter(blocks)
+
+    doc.build([SvgDiagram(BlockPair(left, right).as_svg()).to_reportlab()
+               for left, right in zip_longest(blocks_iter, blocks_iter)])
 
 
-def main():
+def main() -> None:
     in_path = Path(__file__).parent / 'books' / 'luck.md'
     name_base = in_path.with_suffix('.pdf').name
     out_path = Path(__file__).parent / 'docs' / name_base

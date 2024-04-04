@@ -5,7 +5,7 @@ from space_tracer import LiveImage
 
 
 class LivePdf(LiveImage):
-    def __init__(self, pdf_path: Path, page: int = 0, dpi: int = 25) -> None:
+    def __init__(self, pdf_path: Path, page: int = 0, dpi: int = 24) -> None:
         self.pdf_path = pdf_path
         self.page = page
         self.dpi = dpi

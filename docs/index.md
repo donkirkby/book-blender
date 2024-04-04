@@ -1,5 +1,7 @@
-# Book Blender
-## Solve a puzzle, read a book
+---
+title: Book Blender
+subtitle: Solve a puzzle, read a book
+---
 Each puzzle is made from a short story that you can read as you solve it.
 Download the puzzle's PDF and print it out. Then unscramble the letters in each
 word. Some of the longer words might hard to unscramble, so skip them at first.
@@ -22,7 +24,7 @@ Here are the blended books you can solve:
 
 If you need help or want to check your answer, see the [solutions] page.
 
-[The Fox and the Grapes]: https://donkirkby.github.io/book-blender/fox-and-grapes.pdf
-[The Feast of Nemesis]: https://donkirkby.github.io/book-blender/feast-of-nemesis.pdf
-[Luck]: https://donkirkby.github.io/book-blender/luck.pdf
-[solutions]: https://donkirkby.github.io/book-blender/solutions
+[The Fox and the Grapes]: fox-and-grapes.pdf
+[The Feast of Nemesis]: feast-of-nemesis.pdf
+[Luck]: luck.pdf
+[solutions]: solutions

@@ -1,0 +1,13 @@
+- name: Solutions
+  link: /solutions
+  dropdown:
+  - name: The Fox and the Grapes
+    link: /solutions/fox-and-grapes.html
+  - name: The Feast of Nemesis
+    link: /solutions/feast-of-nemesis.html
+  - name: Luck
+    link: /solutions/luck.html
+- name: GitHub
+  link: https://github.com/donkirkby/book-blender
+- name: <img src="https://donkirkby.github.io/favicon.png">
+  link: https://donkirkby.github.io/

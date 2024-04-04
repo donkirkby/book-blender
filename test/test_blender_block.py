@@ -127,7 +127,7 @@ def test_draw(image_differ):
                               (10, 60),
                               font_family='Courier',
                               font_size=20))
-    expected_drawing.add(Text('                            .'.replace(sp, nbsp),
+    expected_drawing.add(Text('                    -  -    .'.replace(sp, nbsp),
                               (10, 100),
                               font_family='Courier',
                               font_size=20))
@@ -155,7 +155,7 @@ def test_draw(image_differ):
     expected_svg = expected_drawing.tostring()
 
     block = BlenderBlock(lines=('Mary had a "little" lamb.     ',
-                                'Its fleece was white as snow. '),
+                                'Its fleece was white-as-snow. '),
                          page=13,
                          scale=1.0)
     actual_svg = block.as_svg()

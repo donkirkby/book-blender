@@ -3,6 +3,7 @@ from reportlab.platypus import SimpleDocTemplate
 
 from blender_block import BlenderBlock
 from block_pair import BlockPair
+from footer import FooterCanvas
 from live_pdf import LivePdf
 from publish_book import write_blocks
 from svg_diagram import SvgDiagram
@@ -43,7 +44,8 @@ def test(tmp_path, image_differ):
                                      showBoundary=False)
 
     expected_doc.build([SvgDiagram(pair.as_svg()).to_reportlab()
-                        for pair in pairs])
+                        for pair in pairs],
+                       canvasmaker=FooterCanvas)
     expected_pdf = LivePdf(expected_path)
 
     actual_path = tmp_path / "actual.pdf"

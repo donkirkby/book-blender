@@ -139,8 +139,8 @@ class BlenderBlock:
         nbsp = '\xa0'
         for i, line in enumerate(self.lines):
             lower_line = line.lower()
-            blanks = re.sub(r'[a-z]', '-', lower_line)
-            blanks = re.sub(r'[^\-]', nbsp, blanks)
+            blanks = re.sub(r'[^a-z]', nbsp, lower_line)
+            blanks = re.sub(r'[a-z]', '-', blanks)
             group.add(drawing.text(blanks,
                                    (MARGIN, (i * 3 + 2 + 0.35) * LINE_HEIGHT),
                                    font_family='Courier',

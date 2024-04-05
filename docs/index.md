@@ -66,7 +66,7 @@ crossword puzzles with jigsaw puzzles. You can also find a complete list of my
 [Four-Letter Blocks]: https://donkirkby.github.io/four-letter-blocks/
 [other projects]: https://donkirkby.github.io/
 
-Header photo is [CC-BY] [robfos].
+Header photo by [robfos], licensed [CC-BY].
 
 [CC-BY]: https://creativecommons.org/licenses/by/2.0/
 [robfos]: https://flic.kr/p/dfmtLi

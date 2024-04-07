@@ -7,7 +7,8 @@ Here are the blended books you can solve:
 
 * [The Fox and the Grapes], by Aesop - The classic fable of unfulfilled desire.
   (400 words)
-* [The Feast of Nemesis], by Saki (9,000 words)
+* [The Feast of Nemesis], by Saki - How to counteract the peace and goodwill of
+  the holidays. (9,000 words)
 * [Luck], by Mark Twain - How a military "genius" made a name for himself.
   (10,000 words)
 
@@ -45,7 +46,7 @@ means that the second missing word starts with c.
 
 [![fox-deduction]][fox-deduction]
 
-Once you unscramble all the words in a section, move on the next section to
+Once you unscramble all the words in a section, move on to the next section to
 keep reading the story. If you need help or want to check your answer, see the
 [solutions] page.
 

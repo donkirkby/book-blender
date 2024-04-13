@@ -1,6 +1,7 @@
+import math
 import re
 import typing
-from itertools import zip_longest, chain
+from itertools import chain
 from textwrap import wrap
 
 from markdown import Extension, Markdown
@@ -40,13 +41,20 @@ class BlenderBlockProcessor(Treeprocessor):
         subtitles = metadata.get('subtitle', [])
         if titles:
             lines = chain((' ' * self.width, ), lines)
-        groups = zip_longest(*([lines] * self.height))
-        for group in groups:
-            group_lines = (line
-                           for line in group
-                           if line is not None)
+        lines = list(lines)
+        lines_left = len(lines)
+        groups_left = math.ceil(lines_left / self.height)
+        while lines_left > 0:
+            group_size = math.ceil(lines_left / groups_left)
+            group_start = -lines_left
+            group_end = group_start + group_size
+            if group_end >= 0:
+                group_end = None
+            group_lines = lines[group_start:group_end]
             self.blocks.append(BlenderBlock(tuple(group_lines),
                                             scale=self.scale))
+            lines_left -= group_size
+            groups_left -= 1
         if titles and self.blocks:
             self.blocks[0].title = titles[0]
         if subtitles and self.blocks:

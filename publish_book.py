@@ -2,7 +2,9 @@ import typing
 from itertools import zip_longest
 from pathlib import Path
 
+from reportlab.lib import pagesizes
 from reportlab.lib.units import inch
+from reportlab.pdfbase.pdfdoc import PDFInfo
 from reportlab.platypus import SimpleDocTemplate
 
 from blender_block import BlenderBlock
@@ -12,9 +14,29 @@ from svg_diagram import SvgDiagram
 
 
 def write_blocks(blocks: typing.Sequence[BlenderBlock], out_path: Path) -> None:
+    subtitle = blocks[0].subtitle
+    subject = 'A word puzzle by Don Kirkby'
+    author = 'Don Kirkby'
+    if subtitle:
+        subtitle_parts = subtitle.split()
+        if subtitle_parts[0].lower() == 'by':
+            subtitle_parts.pop(0)
+            author = ' '.join(subtitle_parts)
+        else:
+            subject = subtitle
+
     doc = SimpleDocTemplate(str(out_path),
-                            leftMargin=inch * 0.75,
-                            rightMargin=inch * 0.75)
+                            leftMargin=inch * 1.1,
+                            rightMargin=inch * 1.1,
+                            pagesize=pagesizes.letter,
+                            author=author,
+                            title=blocks[0].title,
+                            subject=subject,
+                            keywords=['puzzles',
+                                      'word-puzzles',
+                                      'games',
+                                      'word-games'],
+                            creator=PDFInfo.creator)
 
     blocks_iter = iter(blocks)
 
@@ -34,7 +56,7 @@ def main() -> None:
         if out_path.exists():
             continue
         with in_path.open('r') as f:
-            blocks = BlenderBlock.read(f, width=30, height=6, scale=0.58)
+            blocks = BlenderBlock.read(f, width=30, height=6, scale=0.5398)
 
         write_blocks(blocks, out_path)
         print(f'Wrote {out_path.relative_to(project_path)}.')

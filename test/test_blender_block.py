@@ -18,7 +18,14 @@ def test_text():
         
         Donec ultricies magna vitae risus vestibulum congue. Morbi sed metus
         nulla. Nullam ut felis non quam auctor euismod. Vestibulum ante ipsum
-        primis in faucibus orci luctus et ultrices posuere cubilia curae.""")
+        primis in faucibus orci luctus et ultrices posuere cubilia curae.
+        
+        Nunc ultrices enim velit, ac imperdiet neque eleifend a. Integer mollis
+        eget nulla vel faucibus. Donec in volutpat odio. Donec hendrerit nisl
+        leo, nec imperdiet orci sollicitudin sit amet. Nam ut nunc at arcu
+        feugiat vestibulum. Ut luctus eu nisl ac venenatis. Integer porta varius
+        eros sit amet elementum. Sed arcu sapien, porta ut nisl quis, convallis
+        molestie metus.""")
     expected_lines1 = ('Lorem ipsum dolor sit amet, consectetur ',
                        'adipiscing elit. Mauris lacus augue,    ',
                        'sagittis at tortor id, condimentum      ',
@@ -30,12 +37,23 @@ def test_text():
     expected_lines2 = ('nulla. Nullam ut felis non quam auctor  ',
                        'euismod. Vestibulum ante ipsum primis in',
                        'faucibus orci luctus et ultrices posuere',
-                       'cubilia curae.                          ')
+                       'cubilia curae.                          ',
+                       'Nunc ultrices enim velit, ac imperdiet  ',
+                       'neque eleifend a. Integer mollis eget   ',
+                       'nulla vel faucibus. Donec in volutpat   ')
+    expected_lines3 = ('odio. Donec hendrerit nisl leo, nec     ',
+                       'imperdiet orci sollicitudin sit amet.   ',
+                       'Nam ut nunc at arcu feugiat vestibulum. ',
+                       'Ut luctus eu nisl ac venenatis. Integer ',
+                       'porta varius eros sit amet elementum.   ',
+                       'Sed arcu sapien, porta ut nisl quis,    ',
+                       'convallis molestie metus.               ')
     blocks = BlenderBlock.read(StringIO(text))
 
-    assert len(blocks) == 2
+    assert len(blocks) == 3
     assert blocks[0].lines == expected_lines1
     assert blocks[1].lines == expected_lines2
+    assert blocks[2].lines == expected_lines3
 
 
 def test_text_dimensions():
@@ -46,7 +64,9 @@ def test_text_dimensions():
         
         Donec ultricies magna vitae risus vestibulum congue. Morbi sed metus
         nulla. Nullam ut felis non quam auctor euismod. Vestibulum ante ipsum
-        primis in faucibus orci luctus et ultrices posuere cubilia curae.""")
+        primis in faucibus orci luctus et ultrices posuere cubilia curae.
+        
+        Nunc ultrices enim velit.""")
     expected_lines1 = ('Lorem ipsum dolor sit amet, consectetur adipiscing',
                        'elit. Mauris lacus augue, sagittis at tortor id,  ',
                        'condimentum mollis nibh. Sed lectus metus,        ',
@@ -56,7 +76,8 @@ def test_text_dimensions():
     expected_lines2 = ('congue. Morbi sed metus nulla. Nullam ut felis non',
                        'quam auctor euismod. Vestibulum ante ipsum primis ',
                        'in faucibus orci luctus et ultrices posuere       ',
-                       'cubilia curae.                                    ')
+                       'cubilia curae.                                    ',
+                       'Nunc ultrices enim velit.                         ')
     width = 50
     height = 6
     blocks = BlenderBlock.read(StringIO(text), width, height)
@@ -85,9 +106,9 @@ def test_title():
                        'sagittis at tortor id, condimentum      ',
                        'mollis nibh. Sed lectus metus, bibendum ',
                        'sit amet finibus venenatis, vehicula vel',
-                       'ipsum.                                  ',
-                       'Donec ultricies magna vitae risus       ')
-    expected_lines2 = ('vestibulum congue. Morbi sed metus      ',
+                       'ipsum.                                  ')
+    expected_lines2 = ('Donec ultricies magna vitae risus       ',
+                       'vestibulum congue. Morbi sed metus      ',
                        'nulla. Nullam ut felis non quam auctor  ',
                        'euismod. Vestibulum ante ipsum primis in',
                        'faucibus orci luctus et ultrices posuere',

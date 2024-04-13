@@ -8,18 +8,18 @@ Download the puzzle's PDF and print it out.
 Here are the blended books you can solve:
 
 * [The Fox and the Grapes], by Aesop - The classic fable of unfulfilled desire.
-  (400 words)
+  (130 words)
 * [The Feast of Nemesis], by Saki - How to counteract the peace and goodwill of
-  the holidays. (9,000 words)
+  the holidays. (1,500 words)
 * [Luck], by Mark Twain - How a military "genius" made a name for himself.
-  (10,000 words)
+  (1,700 words)
 
 As an example, here's the first section of The Fox and The Grapes, by Aesop:
 
 [![fox-start]][fox-start]
 
 Start unscrambling the letters in each word that you can. Some of the longer
-words might hard to unscramble, so skip them at first. Some words could be
+words might be hard to unscramble, so skip them at first. Some words could be
 unscrambled more than one way, like "was" or "saw", so skip them too.
 
 [![fox-easy]][fox-easy]
@@ -30,21 +30,21 @@ Of course, each column is scrambled, so you don't know which row each letter
 came from. Cross out the letters in that column in the words you've already
 unscrambled, and the ones that are left can help you solve the last few words.
 
-In the example, the end of the last word is the only thing missing in that
-column, so cross out all the letters above it. That leaves you with the letter
-d. Similarly, the fourth word is either "saw" or "was", so look to see which
-column has a w in it. Since only the third column under that word has a w, the
-word must be "saw". The gray bands should help you trace the columns down the
-page.
+In the example, the second letter of the third word is the only thing missing
+in that column, so cross out all the letters below it. That leaves you with the
+letter u. Similarly, the seventh word is either "saw" or "was", so look to see
+which column has a w in it. Since only the first column under that word has a
+w, the word must be "was". The gray bands should help you trace the columns
+down the page.
 
 [![fox-column]][fox-column]
 
 Continue using the clues at the bottom to work out letters until you can solve
 each word. You might also get hints from the surrounding story. If a column has
-more than one missing word, check to see if any of the letters appears in only
-one of the missing words. In the example, the first column has a c and an h
-left. The first missing word doesn't contain h, so it must start with c. That
-means that the second missing word starts with c.
+more than one missing word, check to see if any of the letters appear in only
+one of the missing words. In the example, the second column has an r and a t
+left. The second missing word doesn't contain t, so it must have the r. That
+means that the first missing word has the t.
 
 [![fox-deduction]][fox-deduction]
 

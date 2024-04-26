@@ -25,38 +25,42 @@ class BlockPair:
         drawing = Drawing(size=(round(2 * (gutter + left_width) + 3.2 * margin),
                                 round(left_height + 6.3 * margin)))
 
+        # Cover
         drawing.add(Rect((trim, trim+margin),
                          size=(round(2*(left_width+gutter) + 2.7 * margin),
                                round(left_height + 2.5 * margin)),
                          fill=cover_gray,
                          stroke='black',
                          stroke_width=trim/2))
+        # Stack of pages
+        h_span = round(left_width - 2.9 * gutter)
+        bend_span = round(4.2 * gutter)
         drawing.add(Rect((trim+margin, trim+margin),
-                         size=(round(2*(left_width+gutter) + 0.8 * margin),
+                         size=(2 * (h_span + bend_span),
                                round(left_height + 1.3 * margin)),
                          fill=shadow_gray,
                          stroke='black',
                          stroke_width=trim/2))
-        h_span = round(left_width - 2.9 * gutter)
+        # Open pages
         drawing.add(Path(d=('M', trim + margin, trim,
                             'h', h_span,
                             'c', round(3.3 * gutter), 0,
-                            round(4.2*gutter), margin,
-                            round(4.2*gutter), margin,
+                            bend_span, margin,
+                            bend_span, margin,
                             'v', round(left_height + margin * 1.2),
                             'v', -round(left_height + margin * 1.2),
                             'c', 0, 0,
                             round(0.8 * gutter), -margin,
-                            round(4.2 * gutter), -margin,
+                            bend_span, -margin,
                             'h', h_span,
                             'v', round(left_height + margin * 1.2),
                             'h', -h_span,
                             'c', -round(3.3 * gutter), 0,
-                            -round(4.2*gutter), margin,
-                            -round(4.2*gutter), margin,
+                            -bend_span, margin,
+                            -bend_span, margin,
                             'c', 0, 0,
                             -round(0.8 * gutter), -margin,
-                            -round(4.2 * gutter), -margin,
+                            -bend_span, -margin,
                             'h', -h_span,
                             'z'),
                          fill='white',

@@ -6,8 +6,6 @@ from:
 * [Luck] by Mark Twain
 
 [The Fox and the Grapes]: https://www.gutenberg.org/cache/epub/28/pg28-images.html#chap31
-[Master Tengtu]: https://www.gutenberg.org/cache/epub/42290/pg42290-images.html#Page_26
-[The Lie]: https://www.gutenberg.org/cache/epub/9363/pg9363-images.html#link2H_4_0016
 [Nyarlathotep]: https://www.gutenberg.org/cache/epub/30637/pg30637-images.html#Page_128
 [The Feast of Nemesis]: https://www.libraryofshortstories.com/onlinereader/the-feast-of-nemesis
 [Luck]: https://www.libraryofshortstories.com/onlinereader/luck

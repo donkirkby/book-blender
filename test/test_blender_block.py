@@ -127,14 +127,14 @@ def test_draw(image_differ):
     nbsp = '\xa0'
     expected_drawing = Drawing(size=(380, 210))
     grey = 'rgb(240, 240, 240)'
-    expected_drawing.add(Rect((70, 20),
-                              (60, 170),
+    expected_drawing.add(Rect((70, 10),
+                              (60, 180),
                               fill=grey))
-    expected_drawing.add(Rect((190, 20),
-                              (60, 170),
+    expected_drawing.add(Rect((190, 10),
+                              (60, 180),
                               fill=grey))
-    expected_drawing.add(Rect((310, 20),
-                              (60, 170),
+    expected_drawing.add(Rect((310, 10),
+                              (60, 180),
                               fill=grey))
     expected_drawing.add(Text('           "      "     .'.replace(sp, nbsp),
                               (10, 40),

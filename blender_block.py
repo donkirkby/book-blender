@@ -124,8 +124,8 @@ class BlenderBlock:
         group.scale(self.scale)
         for i in range(5, self.column_count, 10):
             shade_width = 5 * LETTER_WIDTH
-            group.add(drawing.rect((i * LETTER_WIDTH + MARGIN, LINE_HEIGHT),
-                                   (shade_width, self.height - LINE_HEIGHT * 1.5),
+            group.add(drawing.rect((i * LETTER_WIDTH + MARGIN, LINE_HEIGHT/2),
+                                   (shade_width, self.height - LINE_HEIGHT),
                                    fill='rgb(240, 240, 240)'))
 
         if self.title:

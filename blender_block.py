@@ -77,7 +77,7 @@ class BlenderBlockExtension(Extension):
 class BlenderBlock:
     @classmethod
     def read(cls,
-             file: typing.IO,
+             source: str,
              width: int = 40,
              height: int = 8,
              scale: float | None = None) -> list['BlenderBlock']:
@@ -85,7 +85,7 @@ class BlenderBlock:
         meta_extension = MetaExtension()
 
         Markdown(extensions=[blender_extension,
-                             meta_extension]).convert(file.read())
+                             meta_extension]).convert(source)
         blocks = blender_extension.processor.blocks
         return blocks
 

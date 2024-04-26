@@ -13,6 +13,8 @@ svglib = "*"
 cairosvg = "*"
 markdown = "*"
 mypy = "*"
+textstat = "*"
+setuptools = "*"
 
 [dev-packages]
 

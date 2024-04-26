@@ -1,4 +1,3 @@
-from io import StringIO
 from textwrap import dedent
 
 from svgwrite import Drawing
@@ -48,7 +47,7 @@ def test_text():
                        'porta varius eros sit amet elementum.   ',
                        'Sed arcu sapien, porta ut nisl quis,    ',
                        'convallis molestie metus.               ')
-    blocks = BlenderBlock.read(StringIO(text))
+    blocks = BlenderBlock.read(text)
 
     assert len(blocks) == 3
     assert blocks[0].lines == expected_lines1
@@ -80,7 +79,7 @@ def test_text_dimensions():
                        'Nunc ultrices enim velit.                         ')
     width = 50
     height = 6
-    blocks = BlenderBlock.read(StringIO(text), width, height)
+    blocks = BlenderBlock.read(text, width, height)
 
     assert len(blocks) == 2
     assert blocks[0].lines == expected_lines1
@@ -113,7 +112,7 @@ def test_title():
                        'euismod. Vestibulum ante ipsum primis in',
                        'faucibus orci luctus et ultrices posuere',
                        'cubilia curae.                          ')
-    blocks = BlenderBlock.read(StringIO(text))
+    blocks = BlenderBlock.read(text)
 
     assert len(blocks) == 2
     assert blocks[0].lines == expected_lines1

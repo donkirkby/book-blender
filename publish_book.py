@@ -6,6 +6,7 @@ from reportlab.lib import pagesizes
 from reportlab.lib.units import inch
 from reportlab.pdfbase.pdfdoc import PDFInfo
 from reportlab.platypus import SimpleDocTemplate
+from textstat import textstat
 
 from blender_block import BlenderBlock
 from block_pair import BlockPair
@@ -45,21 +46,33 @@ def write_blocks(blocks: typing.Sequence[BlenderBlock], out_path: Path) -> None:
               canvasmaker=FooterCanvas)
 
 
+def find_mod_time(project_path: Path) -> float:
+    return max(file_path.stat().st_mtime
+               for file_path in project_path.rglob('*.py'))
+
+
 def main() -> None:
     project_path = Path(__file__).parent
+    code_mod_time = find_mod_time(project_path)
     books_path = project_path / 'docs' / 'solutions'
     for in_path in books_path.glob('*.md'):
         name_base = in_path.with_suffix('.pdf').name
         if name_base == 'index.pdf':
             continue
         out_path = project_path / 'docs' / name_base
-        if out_path.exists():
+        is_up_to_date = (out_path.exists() and
+                         code_mod_time < out_path.stat().st_mtime)
+        source = in_path.read_text()
+        level = textstat.text_standard(source)
+        word_count = textstat.lexicon_count(source)
+        action = 'skipping' if is_up_to_date else 'generating'
+        print(f'{word_count} words, {level} in {name_base}, {action}.')
+
+        if is_up_to_date:
             continue
-        with in_path.open('r') as f:
-            blocks = BlenderBlock.read(f, width=30, height=6, scale=0.5398)
+        blocks = BlenderBlock.read(source, width=30, height=6, scale=0.5398)
 
         write_blocks(blocks, out_path)
-        print(f'Wrote {out_path.relative_to(project_path)}.')
     print('Done.')
 
 

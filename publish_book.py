@@ -1,7 +1,9 @@
 import typing
 from itertools import zip_longest
 from pathlib import Path
+from tempfile import NamedTemporaryFile
 
+from fitz import fitz
 from reportlab.lib import pagesizes
 from reportlab.lib.units import inch
 from reportlab.pdfbase.pdfdoc import PDFInfo
@@ -14,7 +16,7 @@ from footer import FooterCanvas
 from svg_diagram import SvgDiagram
 
 
-def write_blocks(blocks: typing.Sequence[BlenderBlock], out_path: Path) -> None:
+def write_blocks(blocks: typing.Sequence[BlenderBlock], out_path: Path) -> bool:
     subtitle = blocks[0].subtitle
     subject = 'A word puzzle by Don Kirkby'
     author = 'Don Kirkby'
@@ -26,24 +28,47 @@ def write_blocks(blocks: typing.Sequence[BlenderBlock], out_path: Path) -> None:
         else:
             subject = subtitle
 
-    doc = SimpleDocTemplate(str(out_path),
-                            leftMargin=inch * 1.1,
-                            rightMargin=inch * 1.1,
-                            pagesize=pagesizes.letter,
-                            author=author,
-                            title=blocks[0].title,
-                            subject=subject,
-                            keywords=['puzzles',
-                                      'word-puzzles',
-                                      'games',
-                                      'word-games'],
-                            creator=PDFInfo.creator)
+    with NamedTemporaryFile(prefix='book-blender',
+                            suffix='.pdf',
+                            delete_on_close=False) as tmp_ctx:
+        tmp_ctx.file.close()
+        doc = SimpleDocTemplate(tmp_ctx.name,
+                                leftMargin=inch * 1.1,
+                                rightMargin=inch * 1.1,
+                                pagesize=pagesizes.letter,
+                                author=author,
+                                title=blocks[0].title,
+                                subject=subject,
+                                keywords=['puzzles',
+                                          'word-puzzles',
+                                          'games',
+                                          'word-games'],
+                                creator=PDFInfo.creator)
 
-    blocks_iter = iter(blocks)
+        blocks_iter = iter(blocks)
 
-    doc.build([SvgDiagram(BlockPair(left, right).as_svg()).to_reportlab()
-               for left, right in zip_longest(blocks_iter, blocks_iter)],
-              canvasmaker=FooterCanvas)
+        doc.build([SvgDiagram(BlockPair(left, right).as_svg()).to_reportlab()
+                   for left, right in zip_longest(blocks_iter, blocks_iter)],
+                  canvasmaker=FooterCanvas)
+        is_changed = False
+        if not out_path.exists():
+            is_changed = True
+        else:
+            new_doc = fitz.open(tmp_ctx.name)
+            old_doc = fitz.open(out_path)
+            if new_doc.page_count != old_doc.page_count:
+                is_changed = True
+            else:
+                dpi = 72
+                for i in range(new_doc.page_count):
+                    new_page = new_doc.load_page(i).get_pixmap(dpi=dpi)
+                    old_page = old_doc.load_page(i).get_pixmap(dpi=dpi)
+                    if new_page.tobytes() != old_page.tobytes():
+                        is_changed = True
+                        break
+        if is_changed:
+            Path(tmp_ctx.name).rename(out_path)
+        return is_changed
 
 
 def find_mod_time(project_path: Path) -> float:
@@ -60,19 +85,18 @@ def main() -> None:
         if name_base == 'index.pdf':
             continue
         out_path = project_path / 'docs' / name_base
-        is_up_to_date = (out_path.exists() and
-                         code_mod_time < out_path.stat().st_mtime)
+        is_changed = (not out_path.exists() or
+                      out_path.stat().st_mtime < code_mod_time)
         source = in_path.read_text()
         level = textstat.text_standard(source)
         word_count = textstat.lexicon_count(source)
-        action = 'skipping' if is_up_to_date else 'generating'
+
+        if is_changed:
+            blocks = BlenderBlock.read(source, width=30, height=6, scale=0.5398)
+            is_changed = write_blocks(blocks, out_path)
+        action = 'generated' if is_changed else 'skipped'
         print(f'{word_count} words, {level} in {name_base}, {action}.')
 
-        if is_up_to_date:
-            continue
-        blocks = BlenderBlock.read(source, width=30, height=6, scale=0.5398)
-
-        write_blocks(blocks, out_path)
     print('Done.')
 
 

@@ -1,11 +1,12 @@
 import math
 import re
-import typing
 from itertools import chain
 from textwrap import wrap
 
 from markdown import Extension, Markdown
 from markdown.extensions.meta import MetaExtension
+from markdown.inlinepatterns import SMART_EMPHASIS_RE, EMPHASIS_RE, STRONG_RE, \
+    SMART_STRONG_RE
 from markdown.treeprocessors import Treeprocessor
 from svgwrite import Drawing
 from svgwrite.container import Group
@@ -31,7 +32,7 @@ class BlenderBlockProcessor(Treeprocessor):
         for child in root:
             if child.text is None:
                 print(repr(child))
-        texts = (re.sub(r'\s+', ' ', child.text)
+        texts = (self.normalize_text(child.text)
                  for child in root)
         lines = (line + ' '*(self.width - len(line))
                  for text in texts
@@ -59,6 +60,22 @@ class BlenderBlockProcessor(Treeprocessor):
             self.blocks[0].title = titles[0]
         if subtitles and self.blocks:
             self.blocks[0].subtitle = subtitles[0]
+
+    @staticmethod
+    def normalize_text(text: str) -> str:
+        """ Clean up whitespace, and get rid of simple styling. """
+        normalized_spaces = re.sub(r'\s+', ' ', text)
+        normalized_dasters = re.sub(STRONG_RE, r'\2', normalized_spaces)
+        normalized_asterisks = re.sub(EMPHASIS_RE,
+                                      r'\2',
+                                      normalized_dasters)
+        normalized_dunders = re.sub(SMART_STRONG_RE,
+                                    r'\2',
+                                    normalized_asterisks)
+        normalized_underscores = re.sub(SMART_EMPHASIS_RE,
+                                        r'\2',
+                                        normalized_dunders)
+        return normalized_underscores
 
 
 class BlenderBlockExtension(Extension):

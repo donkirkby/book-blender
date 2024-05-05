@@ -121,6 +121,17 @@ def test_title():
     assert blocks[0].subtitle == 'by Mr. Blends'
 
 
+def test_text_style():
+    text = dedent("""\
+        Lorem *ipsum* dolor _sit_ amet, **consectetur** adipiscing __elit__.""")
+    expected_lines = ('Lorem ipsum dolor sit amet, consectetur ',
+                      'adipiscing elit.                        ')
+    blocks = BlenderBlock.read(text)
+
+    assert len(blocks) == 1
+    assert blocks[0].lines == expected_lines
+
+
 def test_draw(image_differ):
     sp = ' '
     nbsp = '\xa0'

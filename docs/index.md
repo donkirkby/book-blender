@@ -13,6 +13,9 @@ Here are the blended books you can solve:
   the holidays. (1,500 words)
 * [Luck], by Mark Twain - How a military "genius" made a name for himself.
   (1,700 words)
+* [Nyarlathotep], by H. P. Lovecraft - An ancient god returns for the end of the
+  world. Solve some of the easier stories before this one, or the challenging
+  vocabulary will fill you with aeehinnopprs. (1,100 words)
 
 As an example, here's the first section of The Fox and The Grapes, by Aesop:
 
@@ -62,6 +65,7 @@ crossword puzzles with jigsaw puzzles. You can also find a complete list of my
 [fox-deduction]: images/fox-deduction.svg
 [The Fox and the Grapes]: fox-and-grapes.pdf
 [The Feast of Nemesis]: feast-of-nemesis.pdf
+[Nyarlathotep]: nyarlathotep.pdf
 [Luck]: luck.pdf
 [solutions]: solutions
 [Four-Letter Blocks]: https://donkirkby.github.io/four-letter-blocks/

@@ -8,8 +8,10 @@ check your solution, you can read the unscrambled stories here:
 * [The Fox and the Grapes] by Aesop
 * [The Feast of Nemesis] by Saki
 * [Luck] by Mark Twain
+* [Nyarlathotep] by H.P. Lovecraft
 
 [main page]: ..
 [The Fox and the Grapes]: fox-and-grapes.md
 [The Feast of Nemesis]: feast-of-nemesis.md
 [Luck]: luck.md
+[Nyarlathotep]: nyarlathotep.md

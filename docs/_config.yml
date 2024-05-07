@@ -2,7 +2,6 @@ theme: bulma-clean-theme
 title: Book Blender
 google_analytics: UA-4644630-2
 baseurl: /book-blender
-repository: donkirkby/book-blender
 
 defaults:
   - scope:
@@ -14,6 +13,3 @@ defaults:
       twitter:
         card: summary_large_image
       image: images/index_hero.jpg
-
-plugins:
-  - "jekyll-github-metadata"

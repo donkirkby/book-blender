@@ -1,4 +1,4 @@
-remote_theme: chrisrhymes/bulma-clean-theme
+theme: bulma-clean-theme
 title: Book Blender
 google_analytics: UA-4644630-2
 baseurl: /book-blender
@@ -7,8 +7,12 @@ defaults:
   - scope:
       path: ""
     values:
+      layout: page
       hero_image: /book-blender/images/index_hero.jpg
       hero_darken: true
       twitter:
         card: summary_large_image
       image: images/index_hero.jpg
+
+plugins:
+  - "jekyll-github-metadata"

@@ -11,7 +11,7 @@ check your solution, you can read the unscrambled stories here:
 * [Nyarlathotep] by H.P. Lovecraft
 
 [main page]: ..
-[The Fox and the Grapes]: fox-and-grapes.md
-[The Feast of Nemesis]: feast-of-nemesis.md
-[Luck]: luck.md
-[Nyarlathotep]: nyarlathotep.md
+[The Fox and the Grapes]: fox-and-grapes
+[The Feast of Nemesis]: feast-of-nemesis
+[Luck]: luck
+[Nyarlathotep]: nyarlathotep

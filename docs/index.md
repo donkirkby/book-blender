@@ -71,7 +71,9 @@ crossword puzzles with jigsaw puzzles. You can also find a complete list of my
 [Four-Letter Blocks]: https://donkirkby.github.io/four-letter-blocks/
 [other projects]: https://donkirkby.github.io/
 
+Story sources are listed on the [sources page].
 Header photo by [robfos], licensed [CC-BY].
 
+[sources page]: sources
 [CC-BY]: https://creativecommons.org/licenses/by/2.0/
 [robfos]: https://flic.kr/p/dfmtLi

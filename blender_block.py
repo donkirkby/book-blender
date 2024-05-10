@@ -148,10 +148,10 @@ class BlenderBlock:
         if self.title:
             group.add(drawing.text(self.title,
                                    (self.width / 2,
-                                    LINE_HEIGHT*2.5),
+                                    LINE_HEIGHT*2.25),
                                    text_anchor='middle',
                                    font_family='Helvetica',
-                                   font_size=LINE_HEIGHT*1.5))
+                                   font_size=LINE_HEIGHT*1.35))
         if self.subtitle:
             group.add(drawing.text(self.subtitle,
                                    (self.width / 2,

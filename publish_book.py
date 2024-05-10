@@ -80,7 +80,7 @@ def main() -> None:
     project_path = Path(__file__).parent
     code_mod_time = find_mod_time(project_path)
     books_path = project_path / 'docs' / 'solutions'
-    for in_path in books_path.glob('*.md'):
+    for in_path in sorted(books_path.glob('*.md')):
         name_base = in_path.with_suffix('.pdf').name
         if name_base == 'index.pdf':
             continue

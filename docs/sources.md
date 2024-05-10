@@ -15,3 +15,4 @@ from:
 [Nyarlathotep]: https://www.gutenberg.org/cache/epub/30637/pg30637-images.html#Page_128
 [The Feast of Nemesis]: https://www.libraryofshortstories.com/onlinereader/the-feast-of-nemesis
 [Luck]: https://www.libraryofshortstories.com/onlinereader/luck
+[The Failure of Hope & Wandel]: https://www.gutenberg.org/cache/epub/15599/pg15599-images.html#THE_FAILURE_OF_HOPE_WANDEL

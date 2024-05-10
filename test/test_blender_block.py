@@ -204,10 +204,10 @@ def test_draw_title(image_differ):
                                   scale=1.0)
     expected_block.draw(expected_drawing)
     expected_drawing.add(Text('Jaws',
-                              (190, 50),
+                              (190, 45),
                               font_family='Helvetica',
                               text_anchor='middle',
-                              font_size=30))
+                              font_size=27))
     expected_svg = expected_drawing.tostring()
 
     block = BlenderBlock(lines=('                              ',

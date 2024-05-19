@@ -14,6 +14,7 @@ from:
 
 [The Fox and the Grapes]: https://www.gutenberg.org/cache/epub/28/pg28-images.html#chap31
 [The Failure of Hope & Wandel]: https://www.gutenberg.org/cache/epub/15599/pg15599-images.html#THE_FAILURE_OF_HOPE_WANDEL
+[Bust-Head Whiskey]: https://www.gutenberg.org/cache/epub/29736/pg29736-images.html#BUST-HEAD_WHISKEY
 [Nyarlathotep]: https://www.gutenberg.org/cache/epub/30637/pg30637-images.html#Page_128
 [Christmas Presents, 1914]: https://www.gutenberg.org/cache/epub/29652/pg29652-images.html
 [The Feast of Nemesis]: https://www.libraryofshortstories.com/onlinereader/the-feast-of-nemesis

@@ -1,6 +1,5 @@
 import math
 import re
-from itertools import chain
 from textwrap import wrap
 
 from markdown import Extension, Markdown
@@ -32,30 +31,51 @@ class BlenderBlockProcessor(Treeprocessor):
         for child in root:
             if child.text is None:
                 print(repr(child))
-        texts = (self.normalize_text(child.text)
-                 for child in root)
-        lines = (line + ' '*(self.width - len(line))
-                 for text in texts
-                 for line in wrap(text, self.width))
+        all_lines = []
+        all_headings = []
+        for child in root:
+            if child.tag == 'h1':
+                all_headings.append(child.text)
+                all_lines.append(' ' * self.width)
+            else:
+                text = self.normalize_text(child.text)
+                all_lines.extend(line + ' '*(self.width - len(line))
+                                 for line in wrap(text, self.width))
+                all_headings.extend([''] * (len(all_lines) - len(all_headings)))
+
         metadata = getattr(self.markdown, 'Meta', {})
         titles = metadata.get('title', [])
         subtitles = metadata.get('subtitle', [])
         if titles:
-            lines = chain((' ' * self.width, ), lines)
-        lines = list(lines)
-        lines_left = len(lines)
-        groups_left = math.ceil(lines_left / self.height)
+            all_lines.insert(0, ' ' * self.width)
+            all_headings.insert(0, '')
+        lines_left = len(all_lines)
         while lines_left > 0:
+            groups_left = math.ceil(lines_left / self.height)
             group_size = math.ceil(lines_left / groups_left)
             group_start = -lines_left
             group_end = group_start + group_size
+
+            # Keep headings with following line.
+            while (group_end < 0 and
+                   all_headings[group_end-1] and
+                   group_end < group_start + self.height):
+                group_end += 1
+            while group_end < 0 and all_headings[group_end-1]:
+                group_end -= 1
+
+            # Check for end of lines.
             if group_end >= 0:
                 group_end = None
-            group_lines = lines[group_start:group_end]
+                lines_left = 0
+            else:
+                lines_left -= group_end - group_start
+
+            group_lines = all_lines[group_start:group_end]
+            group_headings = all_headings[group_start:group_end]
             self.blocks.append(BlenderBlock(tuple(group_lines),
-                                            scale=self.scale))
-            lines_left -= group_size
-            groups_left -= 1
+                                            scale=self.scale,
+                                            headings=group_headings))
         if titles and self.blocks:
             self.blocks[0].title = titles[0]
         if subtitles and self.blocks:
@@ -109,9 +129,14 @@ class BlenderBlock:
     def __init__(self,
                  lines: tuple[str, ...],
                  page: int | None = None,
-                 scale: float | None = None) -> None:
+                 scale: float | None = None,
+                 headings: list[str] | None = None) -> None:
         self.lines = lines
         self.page = page
+        if headings:
+            self.headings = headings
+        else:
+            self.headings = [''] * self.row_count
         if scale is None:
             self.scale = 0.5
         else:
@@ -157,6 +182,15 @@ class BlenderBlock:
                                    (self.width / 2,
                                     LINE_HEIGHT*3.5),
                                    text_anchor='middle',
+                                   font_family='Helvetica',
+                                   font_size=LINE_HEIGHT))
+        for heading_row, heading in enumerate(self.headings):
+            if not heading:
+                continue
+            group.add(drawing.text(heading,
+                                   (MARGIN,
+                                    (heading_row * 3 + 2 + 0.35) * LINE_HEIGHT),
+                                   text_anchor='start',
                                    font_family='Helvetica',
                                    font_size=LINE_HEIGHT))
 

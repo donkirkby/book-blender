@@ -1,11 +1,17 @@
 - name: Solutions
-  link: /solutions
+  link: /solutions/
   dropdown:
-  - name: The Fox and the Grapes
+  - name: The Fox and the Grapes, by Aesop
     link: /solutions/fox-and-grapes.html
-  - name: The Feast of Nemesis
+  - name: The Failure of Hope & Wandel, by Ambrose Bierce
+    link: /solutions/failure-of-hope-and-wandel.html
+  - name: Nyarlathotep, by H.P. Lovecraft
+    link: /solutions/nyarlathotep.html
+  - name: Christmas Presents, 1914, from Punch Magazine
+    link: /solutions/christmas-presents.html
+  - name: The Feast of Nemesis, by Saki
     link: /solutions/feast-of-nemesis.html
-  - name: Luck
+  - name: Luck, by Mark Twain
     link: /solutions/luck.html
 - name: GitHub
   link: https://github.com/donkirkby/book-blender

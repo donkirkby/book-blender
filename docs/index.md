@@ -9,6 +9,12 @@ Here are the blended books you can solve:
 
 * [The Fox and the Grapes], by Aesop - The classic fable of unfulfilled desire.
   (130 words)
+* [Christmas Presents, 1914], from Punch Magazine - a humorous look at some less
+  serious impacts of World War I on British families. This is from the same
+  period when A. A. Milne was writing for Punch, but I don't know who wrote
+  this. (630 words)
+* [The Failure of Hope & Wandel], by Ambrose Bierce - An ambitious business plan
+  goes bust. This probably didn't win him any fans in the south. (810 words)
 * [The Feast of Nemesis], by Saki - How to counteract the peace and goodwill of
   the holidays. (1,500 words)
 * [Luck], by Mark Twain - How a military "genius" made a name for himself.
@@ -64,6 +70,8 @@ crossword puzzles with jigsaw puzzles. You can also find a complete list of my
 [fox-column]: images/fox-column.svg
 [fox-deduction]: images/fox-deduction.svg
 [The Fox and the Grapes]: fox-and-grapes.pdf
+[Christmas Presents, 1914]: christmas-presents.pdf
+[The Failure of Hope & Wandel]: failure-of-hope-and-wandel.pdf
 [The Feast of Nemesis]: feast-of-nemesis.pdf
 [Nyarlathotep]: nyarlathotep.pdf
 [Luck]: luck.pdf

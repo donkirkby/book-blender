@@ -7,6 +7,12 @@ Here are the blended books you can solve:
 
 * [The Fox and the Grapes], by Aesop - The classic fable of unfulfilled desire.
   (130 words)
+* [Christmas Presents, 1914], from Punch Magazine - a humorous look at some less
+  serious impacts of World War I on British families. This is from the same
+  period when A. A. Milne was writing for Punch, but I don't know who wrote
+  this. (630 words)
+* [The Failure of Hope & Wandel], by Ambrose Bierce - An ambitious business plan
+  goes bust. This probably didn't win him any fans in the south. (810 words)
 * [The Feast of Nemesis], by Saki - How to counteract the peace and goodwill of
   the holidays. (1,500 words)
 * [Luck], by Mark Twain - How a military "genius" made a name for himself.
@@ -62,9 +68,18 @@ crossword puzzles with jigsaw puzzles. You can also find a complete list of my
 [fox-column]: https://donkirkby.github.io/book-blender/images/fox-column.svg
 [fox-deduction]: https://donkirkby.github.io/book-blender/images/fox-deduction.svg
 [The Fox and the Grapes]: https://donkirkby.github.io/book-blender/fox-and-grapes.pdf
+[Christmas Presents, 1914]: https://donkirkby.github.io/book-blender/christmas-presents.pdf
+[The Failure of Hope & Wandel]: https://donkirkby.github.io/book-blender/failure-of-hope-and-wandel.pdf
 [The Feast of Nemesis]: https://donkirkby.github.io/book-blender/feast-of-nemesis.pdf
 [Nyarlathotep]: https://donkirkby.github.io/book-blender/nyarlathotep.pdf
 [Luck]: https://donkirkby.github.io/book-blender/luck.pdf
 [solutions]: https://donkirkby.github.io/book-blender/solutions
 [Four-Letter Blocks]: https://donkirkby.github.io/four-letter-blocks/
 [other projects]: https://donkirkby.github.io/
+
+Story sources are listed on the [sources page].
+Header photo by [robfos], licensed [CC-BY].
+
+[sources page]: https://donkirkby.github.io/book-blender/sources
+[CC-BY]: https://creativecommons.org/licenses/by/2.0/
+[robfos]: https://flic.kr/p/dfmtLi

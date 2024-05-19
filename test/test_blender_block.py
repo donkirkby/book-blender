@@ -121,6 +121,129 @@ def test_title():
     assert blocks[0].subtitle == 'by Mr. Blends'
 
 
+def test_heading():
+    text = dedent("""\
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris lacus
+        augue, sagittis at tortor id, condimentum mollis nibh.
+
+        # Chapter II
+        Donec ultricies magna vitae risus vestibulum congue. Morbi sed metus
+        nulla. Nullam ut felis non quam auctor euismod. Vestibulum ante ipsum
+        primis in faucibus orci luctus et ultrices posuere cubilia curae.""")
+    expected_lines1 = ('Lorem ipsum dolor sit amet, consectetur ',
+                       'adipiscing elit. Mauris lacus augue,    ',
+                       'sagittis at tortor id, condimentum      ',
+                       'mollis nibh.                            ',
+                       '                                        ',
+                       'Donec ultricies magna vitae risus       ')
+    expected_lines2 = ('vestibulum congue. Morbi sed metus      ',
+                       'nulla. Nullam ut felis non quam auctor  ',
+                       'euismod. Vestibulum ante ipsum primis in',
+                       'faucibus orci luctus et ultrices posuere',
+                       'cubilia curae.                          ')
+    blocks = BlenderBlock.read(text)
+
+    assert len(blocks) == 2
+    assert blocks[0].lines == expected_lines1
+    assert blocks[1].lines == expected_lines2
+    assert blocks[0].headings == ['', '', '', '', 'Chapter II', '']
+
+
+def test_heading_and_title():
+    text = dedent("""\
+        ---
+        title: Lorem Ipsum
+        ---
+        # Chapter I
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+
+        # Chapter II
+        Donec ultricies magna vitae risus vestibulum congue. Morbi sed metus
+        nulla. Nullam ut felis non quam auctor euismod. Vestibulum ante ipsum
+        primis in faucibus orci luctus et ultrices posuere cubilia curae.""")
+    expected_lines1 = ('                                        ',
+                       '                                        ',
+                       'Lorem ipsum dolor sit amet, consectetur ',
+                       'adipiscing elit.                        ',
+                       '                                        ',
+                       'Donec ultricies magna vitae risus       ')
+    expected_lines2 = ('vestibulum congue. Morbi sed metus      ',
+                       'nulla. Nullam ut felis non quam auctor  ',
+                       'euismod. Vestibulum ante ipsum primis in',
+                       'faucibus orci luctus et ultrices posuere',
+                       'cubilia curae.                          ')
+    blocks = BlenderBlock.read(text)
+
+    assert len(blocks) == 2
+    assert blocks[0].lines == expected_lines1
+    assert blocks[1].lines == expected_lines2
+    assert blocks[0].headings == ['', 'Chapter I', '', '', 'Chapter II', '']
+
+
+def test_heading_at_page_end_without_room():
+    text = dedent("""\
+        # Chapter I
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris lacus
+        augue, sagittis at tortor id, condimentum mollis nibh.
+
+        # Chapter II
+        Donec ultricies magna vitae risus vestibulum congue. Morbi sed metus
+        nulla. Nullam ut felis non quam auctor euismod. Vestibulum ante ipsum
+        primis in faucibus orci luctus et ultrices posuere cubilia curae.""")
+    expected_lines1 = ('                                        ',
+                       'Lorem ipsum dolor sit amet, consectetur ',
+                       'adipiscing elit. Mauris lacus augue,    ',
+                       'sagittis at tortor id, condimentum      ',
+                       'mollis nibh.                            ')
+    expected_lines2 = ('                                        ',
+                       'Donec ultricies magna vitae risus       ',
+                       'vestibulum congue. Morbi sed metus      ',
+                       'nulla. Nullam ut felis non quam auctor  ')
+    expected_lines3 = ('euismod. Vestibulum ante ipsum primis in',
+                       'faucibus orci luctus et ultrices posuere',
+                       'cubilia curae.                          ')
+    blocks = BlenderBlock.read(text, height=6)
+
+    assert len(blocks) == 3
+    assert blocks[0].lines == expected_lines1
+    assert blocks[1].lines == expected_lines2
+    assert blocks[2].lines == expected_lines3
+    assert blocks[0].headings == ['Chapter I', '', '', '', '']
+    assert blocks[1].headings == ['Chapter II', '', '', '']
+    assert blocks[2].headings == ['', '', '']
+
+
+def test_heading_at_page_end_with_room():
+    text = dedent("""\
+        # Chapter I
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris lacus
+        augue, sagittis at tortor id, condimentum mollis nibh.
+
+        # Chapter II
+        Donec ultricies magna vitae risus vestibulum congue. Morbi sed metus
+        nulla. Nullam ut felis non quam auctor euismod. Vestibulum ante ipsum
+        primis in faucibus orci luctus et ultrices posuere cubilia curae.""")
+    expected_lines1 = ('                                        ',
+                       'Lorem ipsum dolor sit amet, consectetur ',
+                       'adipiscing elit. Mauris lacus augue,    ',
+                       'sagittis at tortor id, condimentum      ',
+                       'mollis nibh.                            ',
+                       '                                        ',
+                       'Donec ultricies magna vitae risus       ')
+    expected_lines2 = ('vestibulum congue. Morbi sed metus      ',
+                       'nulla. Nullam ut felis non quam auctor  ',
+                       'euismod. Vestibulum ante ipsum primis in',
+                       'faucibus orci luctus et ultrices posuere',
+                       'cubilia curae.                          ')
+    blocks = BlenderBlock.read(text, height=7)
+
+    assert len(blocks) == 2
+    assert blocks[0].lines == expected_lines1
+    assert blocks[1].lines == expected_lines2
+    assert blocks[0].headings == ['Chapter I', '', '', '', '', 'Chapter II', '']
+    assert blocks[1].headings == ['', '', '', '', '']
+
+
 def test_text_style():
     text = dedent("""\
         Lorem *ipsum* dolor _sit_ amet, **consectetur** adipiscing __elit__.""")
@@ -247,6 +370,32 @@ def test_draw_subtitle(image_differ):
                          scale=1.0)
     block.title = 'Jaws'
     block.subtitle = 'by Mr. Blender'
+    actual_svg = block.as_svg()
+
+    image_differ.assert_equal(LiveSvg(SvgDiagram(actual_svg)),
+                              LiveSvg(SvgDiagram(expected_svg)))
+
+
+# noinspection DuplicatedCode
+def test_draw_heading(image_differ):
+    expected_drawing = Drawing(size=(380, 290))
+    expected_block = BlenderBlock(lines=('Mary had a "little" lamb.     ',
+                                         '                              ',
+                                         'Its fleece was white as snow. '),
+                                  scale=1.0)
+    expected_block.draw(expected_drawing)
+    expected_drawing.add(Text('Chapter II',
+                              (10, 107),
+                              font_family='Helvetica',
+                              text_anchor='start',
+                              font_size=20))
+    expected_svg = expected_drawing.tostring()
+
+    block = BlenderBlock(lines=('Mary had a "little" lamb.     ',
+                                '                              ',
+                                'Its fleece was white as snow. '),
+                         scale=1.0)
+    block.headings[1] = 'Chapter II'
     actual_svg = block.as_svg()
 
     image_differ.assert_equal(LiveSvg(SvgDiagram(actual_svg)),

@@ -66,7 +66,7 @@ decay.”
 
 # Chapter IV
 
-“Chose yet again.” It was the fairy's voice.
+“Choose yet again.” It was the fairy's voice.
 
 “Two gifts remain. And do not despair. In the beginning there was but
 one that was precious, and it is still here.”

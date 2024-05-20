@@ -10,6 +10,7 @@ check your solution, you can read the unscrambled stories here:
 * [Nyarlathotep] by H.P. Lovecraft
 * [Christmas Presents, 1914] from Punch Magazine
 * [The Feast of Nemesis] by Saki
+* [The Five Boons of Life] by Mark Twain
 * [Luck] by Mark Twain
 
 [main page]: ..
@@ -17,5 +18,6 @@ check your solution, you can read the unscrambled stories here:
 [The Failure of Hope & Wandel]: failure-of-hope-and-wandel
 [The Feast of Nemesis]: feast-of-nemesis
 [The Fox and the Grapes]: fox-and-grapes
+[The Five Boons of Life]: five-boons-of-life
 [Luck]: luck
 [Nyarlathotep]: nyarlathotep

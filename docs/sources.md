@@ -10,7 +10,11 @@ from:
 * [Nyarlathotep] by H.P. Lovecraft
 * [Christmas Presents, 1914] from Punch Magazine
 * [The Feast of Nemesis] by Saki
+* [The Five Boons of Life] by Mark Twain
 * [Luck] by Mark Twain
+
+Header photo by [robfos], and puzzle book image in blog from
+[Wikimedia commons]. Both licensed [CC-BY].
 
 [The Fox and the Grapes]: https://www.gutenberg.org/cache/epub/28/pg28-images.html#chap31
 [The Failure of Hope & Wandel]: https://www.gutenberg.org/cache/epub/15599/pg15599-images.html#THE_FAILURE_OF_HOPE_WANDEL
@@ -20,3 +24,7 @@ from:
 [The Feast of Nemesis]: https://www.libraryofshortstories.com/onlinereader/the-feast-of-nemesis
 [The Five Boons of Life]: https://www.gutenberg.org/cache/epub/142/pg142-images.html#link2H_4_0031
 [Luck]: https://www.libraryofshortstories.com/onlinereader/luck
+
+[CC-BY]: https://creativecommons.org/licenses/by/2.0/
+[robfos]: https://flic.kr/p/dfmtLi
+[Wikimedia commons]: https://commons.wikimedia.org/wiki/File:Golden_puzzle_book%2Bbookscript.svg

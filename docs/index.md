@@ -5,6 +5,9 @@ subtitle: Solve a puzzle, read a book
 Each puzzle is made from a short story that you can read as you solve it.
 Download the puzzle's PDF and print it out.
 
+New blended books are announced in the [blog] and its RSS feed, and usually on
+[mastodon].
+
 Here are the blended books you can solve:
 
 * [The Fox and the Grapes], by Aesop - The classic fable of unfulfilled desire.
@@ -13,6 +16,8 @@ Here are the blended books you can solve:
   serious impacts of World War I on British families. This is from the same
   period when A. A. Milne was writing for Punch, but I don't know who wrote
   this. (630 words)
+* [The Five Boons of Life], by Mark Twain - a rueful look at what drives us.
+  (770 words)
 * [The Failure of Hope & Wandel], by Ambrose Bierce - An ambitious business plan
   goes bust. This probably didn't win him any fans in the south. (810 words)
 * [The Feast of Nemesis], by Saki - How to counteract the peace and goodwill of
@@ -71,6 +76,7 @@ crossword puzzles with jigsaw puzzles. You can also find a complete list of my
 [fox-deduction]: images/fox-deduction.svg
 [The Fox and the Grapes]: fox-and-grapes.pdf
 [Christmas Presents, 1914]: christmas-presents.pdf
+[The Five Boons of Life]: five-boons-of-life.pdf
 [The Failure of Hope & Wandel]: failure-of-hope-and-wandel.pdf
 [The Feast of Nemesis]: feast-of-nemesis.pdf
 [Nyarlathotep]: nyarlathotep.pdf
@@ -79,9 +85,8 @@ crossword puzzles with jigsaw puzzles. You can also find a complete list of my
 [Four-Letter Blocks]: https://donkirkby.github.io/four-letter-blocks/
 [other projects]: https://donkirkby.github.io/
 
-Story sources are listed on the [sources page].
-Header photo by [robfos], licensed [CC-BY].
+Story and image sources are listed on the [sources page].
 
 [sources page]: sources
-[CC-BY]: https://creativecommons.org/licenses/by/2.0/
-[robfos]: https://flic.kr/p/dfmtLi
+[blog]: blog
+[mastodon]: https://hachyderm.io/@donkirkby

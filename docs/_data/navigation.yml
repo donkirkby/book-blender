@@ -11,8 +11,12 @@
     link: /solutions/christmas-presents.html
   - name: The Feast of Nemesis, by Saki
     link: /solutions/feast-of-nemesis.html
+  - name: The Five Boons of Life, by Mark Twain
+    link: /solutions/five-boons-of-life.html
   - name: Luck, by Mark Twain
     link: /solutions/luck.html
+- name: Blog
+  link: /blog
 - name: GitHub
   link: https://github.com/donkirkby/book-blender
 - name: <img src="https://donkirkby.github.io/favicon.png">

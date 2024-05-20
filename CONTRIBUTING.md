@@ -18,6 +18,7 @@ If it's fun enough to publish, clean up any errors by editing the solution and
 regenerating the PDF. Then add the story in these places:
 1. `README.md`
 2. `docs/index.md` - Compare it to `README.md`.
-3. `docs/solutions/index.md`
-4. `docs/sources.md`
-5. `docs/_data/navigation.yml`
+3. `_posts/YYYY-MM-DD-title.md` - Copy description from `README.md`.
+4. `docs/solutions/index.md`
+5. `docs/sources.md`
+6. `docs/_data/navigation.yml`

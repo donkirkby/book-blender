@@ -2,6 +2,10 @@ theme: bulma-clean-theme
 title: Book Blender
 google_analytics: UA-4644630-2
 baseurl: /book-blender
+paginate: 5
+paginate_path: "/blog/page:num"
+plugins:
+  - jekyll-paginate
 
 defaults:
   - scope:
@@ -13,3 +17,8 @@ defaults:
       twitter:
         card: summary_large_image
       image: images/index_hero.jpg
+  - scope:
+      path: "_posts"
+    values:
+      layout: post
+      image: /book-blender/images/puzzle-book.svg

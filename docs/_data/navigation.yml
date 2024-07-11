@@ -1,20 +1,22 @@
 - name: Solutions
   link: /solutions/
   dropdown:
-  - name: The Fox and the Grapes, by Aesop
-    link: /solutions/fox-and-grapes.html
-  - name: The Failure of Hope & Wandel, by Ambrose Bierce
-    link: /solutions/failure-of-hope-and-wandel.html
-  - name: Nyarlathotep, by H.P. Lovecraft
-    link: /solutions/nyarlathotep.html
   - name: Christmas Presents, 1914, from Punch Magazine
     link: /solutions/christmas-presents.html
+  - name: The Failure of Hope & Wandel, by Ambrose Bierce
+    link: /solutions/failure-of-hope-and-wandel.html
   - name: The Feast of Nemesis, by Saki
     link: /solutions/feast-of-nemesis.html
   - name: The Five Boons of Life, by Mark Twain
     link: /solutions/five-boons-of-life.html
+  - name: The Fox and the Grapes, by Aesop
+    link: /solutions/fox-and-grapes.html
   - name: Luck, by Mark Twain
     link: /solutions/luck.html
+  - name: Nyarlathotep, by H.P. Lovecraft
+    link: /solutions/nyarlathotep.html
+  - name: The Talking-Out of Tarrington, by Saki
+    link: /solutions/the-talking-out-of-tarrington.html
 - name: Blog
   link: /blog
 - name: GitHub

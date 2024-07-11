@@ -198,21 +198,23 @@ class BlenderBlock:
         nbsp = '\xa0'
         for i, line in enumerate(self.lines):
             lower_line = line.lower()
-            blanks = re.sub(r'[^a-z]', nbsp, lower_line)
-            blanks = re.sub(r'[a-z]', '-', blanks)
+            blanks = ''.join('-' if c.isalpha() else nbsp
+                             for c in lower_line)
             group.add(drawing.text(blanks,
                                    (MARGIN, (i * 3 + 2 + 0.35) * LINE_HEIGHT),
                                    font_family='Courier',
                                    font_size=LINE_HEIGHT))
-            punctuation = re.sub(r'[a-z ]', nbsp, lower_line)
+            punctuation = ''.join(nbsp if c.isalpha() or c == ' ' else c
+                                  for c in lower_line)
             group.add(drawing.text(punctuation,
                                    (MARGIN, (i * 3 + 2) * LINE_HEIGHT),
                                    font_family='Courier',
                                    font_size=LINE_HEIGHT))
-            chars = list(re.sub(r'[^a-z]', nbsp, lower_line))
+            chars = [c if c.isalpha() else nbsp
+                     for c in lower_line]
             for j, char in enumerate(chars):
                 column_letters[j].append(char)
-            for match in re.finditer(r'[a-z]+', lower_line):
+            for match in re.finditer(r'\w+', ''.join(chars)):
                 start, end = match.span()
                 chars[start:end] = sorted(chars[start:end])
             sorted_line = ''.join(chars)
@@ -221,7 +223,7 @@ class BlenderBlock:
                                    font_family='Courier',
                                    font_size=LINE_HEIGHT))
         for column in column_letters:
-            column.sort()
+            column.sort(key=lambda c: (c == nbsp, c))
         for i in range(self.row_count):
             row_letters = ''.join(column[i] for column in column_letters)
             group.add(drawing.text(row_letters,

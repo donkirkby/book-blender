@@ -20,6 +20,8 @@ Here are the blended books you can solve:
   (770 words)
 * [The Failure of Hope & Wandel], by Ambrose Bierce - An ambitious business plan
   goes bust. This probably didn't win him any fans in the south. (810 words)
+* [The Talking-Out of Tarrington], by Saki - Clovis avoids making a new friend.
+  (980 words)
 * [The Feast of Nemesis], by Saki - How to counteract the peace and goodwill of
   the holidays. (1,500 words)
 * [Luck], by Mark Twain - How a military "genius" made a name for himself.
@@ -79,6 +81,7 @@ crossword puzzles with jigsaw puzzles. You can also find a complete list of my
 [The Five Boons of Life]: five-boons-of-life.pdf
 [The Failure of Hope & Wandel]: failure-of-hope-and-wandel.pdf
 [The Feast of Nemesis]: feast-of-nemesis.pdf
+[The Talking-Out of Tarrington]: the-talking-out-of-tarrington.pdf
 [Nyarlathotep]: nyarlathotep.pdf
 [Luck]: luck.pdf
 [solutions]: solutions

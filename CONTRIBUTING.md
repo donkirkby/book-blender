@@ -8,8 +8,8 @@ markdown file in `docs/solutions` named after the story. Paste the text in, and
 clean up the title and any headings. The title and author can be put in the
 front matter, see other files for examples.
 
-Run `publish_book.py`, and print out the PDF version of the new story. Try to
-solve it.
+Run `publish.py`, and print out the PDF version of the new story. Try to solve
+it.
 
 Once you've finished solving it, decide if it's fun enough to publish. If not,
 delete the solution, the PDF, and the source.
@@ -22,3 +22,5 @@ regenerating the PDF. Then add the story in these places:
 4. `docs/solutions/index.md`
 5. `docs/sources.md`
 6. `docs/_data/navigation.yml`
+
+[Project Gutenberg]: https://gutenberg.org

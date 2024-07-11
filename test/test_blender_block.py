@@ -255,6 +255,7 @@ def test_text_style():
     assert blocks[0].lines == expected_lines
 
 
+# noinspection DuplicatedCode
 def test_draw(image_differ):
     sp = ' '
     nbsp = '\xa0'
@@ -310,6 +311,70 @@ def test_draw(image_differ):
 
     block = BlenderBlock(lines=('Mary had a "little" lamb.     ',
                                 'Its fleece was white-as-snow. '),
+                         page=13,
+                         scale=1.0)
+    actual_svg = block.as_svg()
+
+    image_differ.assert_equal(LiveSvg(SvgDiagram(actual_svg)),
+                              LiveSvg(SvgDiagram(expected_svg)))
+
+
+# noinspection DuplicatedCode
+def test_draw_unicode(image_differ):
+    sp = ' '
+    nbsp = '\xa0'
+    expected_drawing = Drawing(size=(380, 210))
+    grey = 'rgb(240, 240, 240)'
+    expected_drawing.add(Rect((70, 10),
+                              (60, 180),
+                              fill=grey))
+    expected_drawing.add(Rect((190, 10),
+                              (60, 180),
+                              fill=grey))
+    expected_drawing.add(Rect((310, 10),
+                              (60, 180),
+                              fill=grey))
+    expected_drawing.add(Text('    _    1 "      "     .'.replace(sp, nbsp),
+                              (10, 40),
+                              font_family='Courier',
+                              font_size=20))
+    expected_drawing.add(Text('---- ---    ------  ---- '.replace(sp, nbsp),
+                              (10, 47),
+                              font_family='Courier',
+                              font_size=20))
+    expected_drawing.add(Text('amry adh    eilltt  ablm'.replace(sp, nbsp),
+                              (10, 60),
+                              font_family='Courier',
+                              font_size=20))
+    expected_drawing.add(Text('                 -     .'.replace(sp, nbsp),
+                              (10, 100),
+                              font_family='Courier',
+                              font_size=20))
+    expected_drawing.add(Text('--- ---- --- ---- -----',
+                              (10, 107),
+                              font_family='Courier',
+                              font_size=20))
+    expected_drawing.add(Text('ist eimn swä rstè aenvï',
+                              (10, 120),
+                              font_family='Courier',
+                              font_size=20))
+    expected_drawing.add(Text('iarymhad wäslirtlenalaeb',
+                              (10, 160),
+                              font_family='Courier',
+                              font_size=20))
+    expected_drawing.add(Text('mts\xa0 ien \xa0 \xa0 ttès \xa0 ïvm',
+                              (10, 180),
+                              font_family='Courier',
+                              font_size=20))
+    expected_drawing.add(Text('* * *',
+                              (190, 140),
+                              font_family='Courier',
+                              text_anchor='middle',
+                              font_size=20))
+    expected_svg = expected_drawing.tostring()
+
+    block = BlenderBlock(lines=('Mary_had 1 "little" lamb.     ',
+                                'Its mien wäs très-naïve.      '),
                          page=13,
                          scale=1.0)
     actual_svg = block.as_svg()

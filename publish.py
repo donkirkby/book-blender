@@ -86,10 +86,12 @@ def main() -> None:
             continue
         in_mod_time = in_path.stat().st_mtime
         out_path = project_path / 'docs' / name_base
-        out_mod_time = out_path.stat().st_mtime
-        is_changed = (not out_path.exists() or
-                      out_mod_time < in_mod_time or
-                      out_mod_time < code_mod_time)
+        if not out_path.exists():
+            is_changed = True
+        else:
+            out_mod_time = out_path.stat().st_mtime
+            is_changed = (out_mod_time < in_mod_time or
+                          out_mod_time < code_mod_time)
         source = in_path.read_text()
         level = textstat.text_standard(source)
         word_count = textstat.lexicon_count(source)

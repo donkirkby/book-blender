@@ -20,6 +20,8 @@ Here are the blended books you can solve:
   goes bust. This probably didn't win him any fans in the south. (810 words)
 * [The Talking-Out of Tarrington], by Saki - Clovis avoids making a new friend.
   (980 words)
+* [The Beggars], by Lord Dunsany - A story about joy, from one of the early
+  masters of fantasy. (1,100 words)
 * [The Feast of Nemesis], by Saki - How to counteract the peace and goodwill of
   the holidays. (1,500 words)
 * [Luck], by Mark Twain - How a military "genius" made a name for himself.
@@ -74,14 +76,15 @@ crossword puzzles with jigsaw puzzles. You can also find a complete list of my
 [fox-easy]: https://donkirkby.github.io/book-blender/images/fox-easy.svg
 [fox-column]: https://donkirkby.github.io/book-blender/images/fox-column.svg
 [fox-deduction]: https://donkirkby.github.io/book-blender/images/fox-deduction.svg
-[The Fox and the Grapes]: https://donkirkby.github.io/book-blender/fox-and-grapes.pdf
+[The Beggars]: https://donkirkby.github.io/book-blender/the-beggars.pdf
 [Christmas Presents, 1914]: https://donkirkby.github.io/book-blender/christmas-presents.pdf
-[The Five Boons of Life]: https://donkirkby.github.io/book-blender/five-boons-of-life.pdf
 [The Failure of Hope & Wandel]: https://donkirkby.github.io/book-blender/failure-of-hope-and-wandel.pdf
 [The Feast of Nemesis]: https://donkirkby.github.io/book-blender/feast-of-nemesis.pdf
-[The Talking-Out of Tarrington]: https://donkirkby.github.io/book-blender/the-talking-out-of-tarrington.pdf
-[Nyarlathotep]: https://donkirkby.github.io/book-blender/nyarlathotep.pdf
+[The Five Boons of Life]: https://donkirkby.github.io/book-blender/five-boons-of-life.pdf
+[The Fox and the Grapes]: https://donkirkby.github.io/book-blender/fox-and-grapes.pdf
 [Luck]: https://donkirkby.github.io/book-blender/luck.pdf
+[Nyarlathotep]: https://donkirkby.github.io/book-blender/nyarlathotep.pdf
+[The Talking-Out of Tarrington]: https://donkirkby.github.io/book-blender/the-talking-out-of-tarrington.pdf
 [solutions]: https://donkirkby.github.io/book-blender/solutions
 [Four-Letter Blocks]: https://donkirkby.github.io/four-letter-blocks/
 [other projects]: https://donkirkby.github.io/

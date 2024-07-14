@@ -1,6 +1,8 @@
 - name: Solutions
   link: /solutions/
   dropdown:
+  - name: The Beggars, by Lord Dunsany
+    link: /solutions/the-beggars.html
   - name: Christmas Presents, 1914, from Punch Magazine
     link: /solutions/christmas-presents.html
   - name: The Failure of Hope & Wandel, by Ambrose Bierce

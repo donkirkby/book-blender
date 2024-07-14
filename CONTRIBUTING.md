@@ -14,7 +14,7 @@ it.
 Once you've finished solving it, decide if it's fun enough to publish. If not,
 delete the solution, the PDF, and the source.
 
-If it's fun enough to publish, clean up any errors by editing the solution and
+If it's enough fun to publish, clean up any errors by editing the solution and
 regenerating the PDF. Then add the story in these places:
 1. `README.md`
 2. `docs/index.md` - Compare it to `README.md`.

@@ -22,6 +22,8 @@ Here are the blended books you can solve:
   goes bust. This probably didn't win him any fans in the south. (810 words)
 * [The Talking-Out of Tarrington], by Saki - Clovis avoids making a new friend.
   (980 words)
+* [The Beggars], by Lord Dunsany - A story about joy, from one of the early
+  masters of fantasy. (1,100 words)
 * [The Feast of Nemesis], by Saki - How to counteract the peace and goodwill of
   the holidays. (1,500 words)
 * [Luck], by Mark Twain - How a military "genius" made a name for himself.
@@ -76,14 +78,15 @@ crossword puzzles with jigsaw puzzles. You can also find a complete list of my
 [fox-easy]: images/fox-easy.svg
 [fox-column]: images/fox-column.svg
 [fox-deduction]: images/fox-deduction.svg
-[The Fox and the Grapes]: fox-and-grapes.pdf
+[The Beggars]: the-beggars.pdf
 [Christmas Presents, 1914]: christmas-presents.pdf
-[The Five Boons of Life]: five-boons-of-life.pdf
 [The Failure of Hope & Wandel]: failure-of-hope-and-wandel.pdf
 [The Feast of Nemesis]: feast-of-nemesis.pdf
-[The Talking-Out of Tarrington]: the-talking-out-of-tarrington.pdf
-[Nyarlathotep]: nyarlathotep.pdf
+[The Five Boons of Life]: five-boons-of-life.pdf
+[The Fox and the Grapes]: fox-and-grapes.pdf
 [Luck]: luck.pdf
+[Nyarlathotep]: nyarlathotep.pdf
+[The Talking-Out of Tarrington]: the-talking-out-of-tarrington.pdf
 [solutions]: solutions
 [Four-Letter Blocks]: https://donkirkby.github.io/four-letter-blocks/
 [other projects]: https://donkirkby.github.io/

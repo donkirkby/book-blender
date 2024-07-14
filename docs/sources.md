@@ -5,6 +5,7 @@ title: Sources
 All the stories are in the public domain. Here are the sources I copied them
 from:
 
+* [The Beggars] by Lord Dunsany
 * [Christmas Presents, 1914] from Punch Magazine
 * [The Failure of Hope & Wandel] by Ambrose Bierce
 * [The Feast of Nemesis] by Saki

@@ -6,6 +6,7 @@ All the stories are in the public domain. Here are the sources I copied them
 from:
 
 * [The Beggars] by Lord Dunsany
+* [Beyond Lies the Wub] by Philip K. Dick
 * [Christmas Presents, 1914] from Punch Magazine
 * [The Failure of Hope & Wandel] by Ambrose Bierce
 * [The Feast of Nemesis] by Saki
@@ -18,8 +19,8 @@ from:
 Header photo by [robfos], and puzzle book image in blog from
 [Wikimedia commons]. Both licensed [CC-BY].
 
-[The Artful Touch]: https://www.gutenberg.org/cache/epub/872/pg872-images.html#page422
 [The Beggars]: https://www.gutenberg.org/cache/epub/57277/pg57277-images.html#Page_138
+[Beyond Lies the Wub]: https://www.gutenberg.org/cache/epub/28554/pg28554-images.html
 [The Failure of Hope & Wandel]: https://www.gutenberg.org/cache/epub/15599/pg15599-images.html#THE_FAILURE_OF_HOPE_WANDEL
 [The Fox and the Grapes]: https://www.gutenberg.org/cache/epub/28/pg28-images.html#chap31
 [Nyarlathotep]: https://www.gutenberg.org/cache/epub/30637/pg30637-images.html#Page_128

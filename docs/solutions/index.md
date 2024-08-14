@@ -6,6 +6,7 @@ If you've downloaded a puzzle from the [main page] and you need help or want to
 check your solution, you can read the unscrambled stories here:
 
 * [The Beggars] by Lord Dunsany
+* [Beyond Lies the Wub] by Philip K. Dick
 * [Christmas Presents, 1914] from Punch Magazine
 * [The Failure of Hope & Wandel] by Ambrose Bierce
 * [The Feast of Nemesis] by Saki
@@ -17,6 +18,7 @@ check your solution, you can read the unscrambled stories here:
 
 [main page]: ..
 [The Beggars]: the-beggars
+[Beyond Lies the Wub]: beyond-lies-the-wub
 [Christmas Presents, 1914]: christmas-presents
 [The Failure of Hope & Wandel]: failure-of-hope-and-wandel
 [The Feast of Nemesis]: feast-of-nemesis

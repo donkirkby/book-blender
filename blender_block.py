@@ -13,6 +13,7 @@ from svgwrite.container import Group
 LINE_HEIGHT = 20
 LETTER_WIDTH = 12
 MARGIN = round(LETTER_WIDTH / 1.2)
+DINKUS = '* * *'
 
 
 class BlenderBlockProcessor(Treeprocessor):
@@ -29,13 +30,16 @@ class BlenderBlockProcessor(Treeprocessor):
 
     def run(self, root):
         for child in root:
-            if child.text is None:
+            if child.text is None and child.tag != 'hr':
                 print(repr(child))
         all_lines = []
         all_headings = []
         for child in root:
             if child.tag == 'h1':
                 all_headings.append(child.text)
+                all_lines.append(' ' * self.width)
+            elif child.tag == 'hr':
+                all_headings.append(DINKUS)
                 all_lines.append(' ' * self.width)
             else:
                 text = self.normalize_text(child.text)
@@ -187,10 +191,16 @@ class BlenderBlock:
         for heading_row, heading in enumerate(self.headings):
             if not heading:
                 continue
+            if heading == DINKUS:
+                x = self.width / 2
+                anchor = 'middle'
+            else:
+                x = MARGIN
+                anchor = 'start'
             group.add(drawing.text(heading,
-                                   (MARGIN,
+                                   (x,
                                     (heading_row * 3 + 2 + 0.35) * LINE_HEIGHT),
-                                   text_anchor='start',
+                                   text_anchor=anchor,
                                    font_family='Helvetica',
                                    font_size=LINE_HEIGHT))
 
@@ -231,12 +241,10 @@ class BlenderBlock:
                                     (self.row_count * 3 + 2 + i) * LINE_HEIGHT),
                                    font_family='Courier',
                                    font_size=LINE_HEIGHT))
-        group.add(drawing.text('* * *',
-                               (self.width / 2,
-                                (self.row_count * 3 + 1) * LINE_HEIGHT),
-                               text_anchor='middle',
-                               font_family='Courier',
-                               font_size=LINE_HEIGHT))
+        divider_y = round((self.row_count * 3 + 0.75) * LINE_HEIGHT)
+        group.add(drawing.line(((self.width-LETTER_WIDTH*15)/2, divider_y),
+                               ((self.width+LETTER_WIDTH*15)/2, divider_y),
+                               stroke='black'))
         # svglib trims leading nbsps when converting to ReportLab drawing.
         for element in group.elements:
             text = getattr(element, 'text', None)

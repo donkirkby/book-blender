@@ -21,14 +21,14 @@ class BlockPair:
         shadow_gray = 'rgb(220, 220, 220)'
 
         left_width = self.left.width * scale
-        left_height = self.left.height * scale
+        max_height = max(self.left.height, (self.right or self.left).height) * scale
         drawing = Drawing(size=(round(2 * (gutter + left_width) + 3.2 * margin),
-                                round(left_height + 6.3 * margin)))
+                                round(max_height + 6.3 * margin)))
 
         # Cover
         drawing.add(Rect((trim, trim+margin),
                          size=(round(2*(left_width+gutter) + 2.7 * margin),
-                               round(left_height + 2.5 * margin)),
+                               round(max_height + 2.5 * margin)),
                          fill=cover_gray,
                          stroke='black',
                          stroke_width=trim/2))
@@ -37,7 +37,7 @@ class BlockPair:
         bend_span = round(4.2 * gutter)
         drawing.add(Rect((trim+margin, trim+margin),
                          size=(2 * (h_span + bend_span),
-                               round(left_height + 1.3 * margin)),
+                               round(max_height + 1.3 * margin)),
                          fill=shadow_gray,
                          stroke='black',
                          stroke_width=trim/2))
@@ -47,13 +47,13 @@ class BlockPair:
                             'c', round(3.3 * gutter), 0,
                             bend_span, margin,
                             bend_span, margin,
-                            'v', round(left_height + margin * 1.2),
-                            'v', -round(left_height + margin * 1.2),
+                            'v', round(max_height + margin * 1.2),
+                            'v', -round(max_height + margin * 1.2),
                             'c', 0, 0,
                             round(0.8 * gutter), -margin,
                             bend_span, -margin,
                             'h', h_span,
-                            'v', round(left_height + margin * 1.2),
+                            'v', round(max_height + margin * 1.2),
                             'h', -h_span,
                             'c', -round(3.3 * gutter), 0,
                             -bend_span, margin,

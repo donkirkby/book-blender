@@ -31,6 +31,9 @@ Here are the blended books you can solve:
 * [Nyarlathotep], by H. P. Lovecraft - An ancient god returns for the end of the
   world. Solve some of the easier stories before this one, or the challenging
   vocabulary will fill you with aeehinnopprs. (1,100 words)
+* [Beyond Lies the Wub], by Philip K. Dick - why we should be cautious with
+  alien first contact. From the author of Minority Report and Blade Runner.
+  (2,600 words)
 
 As an example, here's the first section of The Fox and The Grapes, by Aesop:
 
@@ -79,6 +82,7 @@ crossword puzzles with jigsaw puzzles. You can also find a complete list of my
 [fox-column]: images/fox-column.svg
 [fox-deduction]: images/fox-deduction.svg
 [The Beggars]: the-beggars.pdf
+[Beyond Lies the Wub]: beyond-lies-the-wub.pdf
 [Christmas Presents, 1914]: christmas-presents.pdf
 [The Failure of Hope & Wandel]: failure-of-hope-and-wandel.pdf
 [The Feast of Nemesis]: feast-of-nemesis.pdf

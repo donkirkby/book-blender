@@ -1,7 +1,7 @@
 from textwrap import dedent
 
 from svgwrite import Drawing
-from svgwrite.shapes import Rect
+from svgwrite.shapes import Rect, Line
 from svgwrite.text import Text
 
 from blender_block import BlenderBlock
@@ -244,6 +244,34 @@ def test_heading_at_page_end_with_room():
     assert blocks[1].headings == ['', '', '', '', '']
 
 
+def test_dinkus():
+    text = dedent("""\
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris lacus
+        augue, sagittis at tortor id, condimentum mollis nibh.
+
+        ---
+        Donec ultricies magna vitae risus vestibulum congue. Morbi sed metus
+        nulla. Nullam ut felis non quam auctor euismod. Vestibulum ante ipsum
+        primis in faucibus orci luctus et ultrices posuere cubilia curae.""")
+    expected_lines1 = ('Lorem ipsum dolor sit amet, consectetur ',
+                       'adipiscing elit. Mauris lacus augue,    ',
+                       'sagittis at tortor id, condimentum      ',
+                       'mollis nibh.                            ',
+                       '                                        ',
+                       'Donec ultricies magna vitae risus       ')
+    expected_lines2 = ('vestibulum congue. Morbi sed metus      ',
+                       'nulla. Nullam ut felis non quam auctor  ',
+                       'euismod. Vestibulum ante ipsum primis in',
+                       'faucibus orci luctus et ultrices posuere',
+                       'cubilia curae.                          ')
+    blocks = BlenderBlock.read(text)
+
+    assert len(blocks) == 2
+    assert blocks[0].lines == expected_lines1
+    assert blocks[1].lines == expected_lines2
+    assert blocks[0].headings == ['', '', '', '', '* * *', '']
+
+
 def test_text_style():
     text = dedent("""\
         Lorem *ipsum* dolor _sit_ amet, **consectetur** adipiscing __elit__.""")
@@ -302,11 +330,7 @@ def test_draw(image_differ):
                               (10, 180),
                               font_family='Courier',
                               font_size=20))
-    expected_drawing.add(Text('* * *',
-                              (190, 140),
-                              font_family='Courier',
-                              text_anchor='middle',
-                              font_size=20))
+    expected_drawing.add(Line((100, 135), (280, 135), stroke='black'))
     expected_svg = expected_drawing.tostring()
 
     block = BlenderBlock(lines=('Mary had a "little" lamb.     ',
@@ -366,11 +390,9 @@ def test_draw_unicode(image_differ):
                               (10, 180),
                               font_family='Courier',
                               font_size=20))
-    expected_drawing.add(Text('* * *',
-                              (190, 140),
-                              font_family='Courier',
-                              text_anchor='middle',
-                              font_size=20))
+    expected_drawing.add(Line((100, 135),
+                              (280, 135),
+                              stroke='black'))
     expected_svg = expected_drawing.tostring()
 
     block = BlenderBlock(lines=('Mary_had 1 "little" lamb.     ',
@@ -461,6 +483,32 @@ def test_draw_heading(image_differ):
                                 'Its fleece was white as snow. '),
                          scale=1.0)
     block.headings[1] = 'Chapter II'
+    actual_svg = block.as_svg()
+
+    image_differ.assert_equal(LiveSvg(SvgDiagram(actual_svg)),
+                              LiveSvg(SvgDiagram(expected_svg)))
+
+
+# noinspection DuplicatedCode
+def test_draw_dinkus(image_differ):
+    expected_drawing = Drawing(size=(380, 290))
+    expected_block = BlenderBlock(lines=('Mary had a "little" lamb.     ',
+                                         '                              ',
+                                         'Its fleece was white as snow. '),
+                                  scale=1.0)
+    expected_block.draw(expected_drawing)
+    expected_drawing.add(Text('* * *',
+                              (190, 107),
+                              font_family='Helvetica',
+                              text_anchor='middle',
+                              font_size=20))
+    expected_svg = expected_drawing.tostring()
+
+    block = BlenderBlock(lines=('Mary had a "little" lamb.     ',
+                                '                              ',
+                                'Its fleece was white as snow. '),
+                         scale=1.0)
+    block.headings[1] = '* * *'
     actual_svg = block.as_svg()
 
     image_differ.assert_equal(LiveSvg(SvgDiagram(actual_svg)),

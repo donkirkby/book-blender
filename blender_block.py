@@ -41,7 +41,7 @@ class BlenderBlockProcessor(Treeprocessor):
             elif child.tag == 'hr':
                 all_headings.append(DINKUS)
                 all_lines.append(' ' * self.width)
-            else:
+            elif child.text is not None:
                 text = self.normalize_text(child.text)
                 all_lines.extend(line + ' '*(self.width - len(line))
                                  for line in wrap(text, self.width))

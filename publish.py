@@ -3,7 +3,7 @@ from itertools import zip_longest
 from pathlib import Path
 from tempfile import NamedTemporaryFile
 
-from fitz import fitz
+from pymupdf import pymupdf
 from reportlab.lib import pagesizes
 from reportlab.lib.units import inch
 from reportlab.pdfbase.pdfdoc import PDFInfo
@@ -54,8 +54,8 @@ def write_blocks(blocks: typing.Sequence[BlenderBlock], out_path: Path) -> bool:
         if not out_path.exists():
             is_changed = True
         else:
-            new_doc = fitz.open(tmp_ctx.name)
-            old_doc = fitz.open(out_path)
+            new_doc = pymupdf.open(tmp_ctx.name)
+            old_doc = pymupdf.open(out_path)
             if new_doc.page_count != old_doc.page_count:
                 is_changed = True
             else:

@@ -22,5 +22,7 @@ regenerating the PDF. Then add the story in these places:
 4. `docs/solutions/index.md`
 5. `docs/sources.md`
 6. `docs/_data/navigation.yml`
+7. Mastodon - use the #WordGame and #puzzle hashtags, as well as an author
+   hashtag, plus the description from `README.md`.
 
 [Project Gutenberg]: https://gutenberg.org

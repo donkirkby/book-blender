@@ -1,6 +1,6 @@
 from pathlib import Path
 
-import fitz
+from pymupdf import pymupdf
 from space_tracer import LiveImage
 
 
@@ -11,7 +11,7 @@ class LivePdf(LiveImage):
         self.dpi = dpi
 
     def convert_to_png(self) -> bytes:
-        fitz_doc = fitz.open(self.pdf_path)
+        fitz_doc = pymupdf.open(self.pdf_path)
         page = fitz_doc.load_page(self.page)
-        pixmap: fitz.Pixmap = page.get_pixmap(dpi=self.dpi)
+        pixmap: pymupdf.Pixmap = page.get_pixmap(dpi=self.dpi)
         return pixmap.tobytes()

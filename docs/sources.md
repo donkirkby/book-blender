@@ -8,6 +8,7 @@ from:
 * [The Beggars] by Lord Dunsany
 * [Beyond Lies the Wub] by Philip K. Dick
 * [Christmas Presents, 1914] from Punch Magazine
+* [The Eyes Have It] by Philip K. Dick
 * [The Failure of Hope & Wandel] by Ambrose Bierce
 * [The Feast of Nemesis] by Saki
 * [The Five Boons of Life] by Mark Twain

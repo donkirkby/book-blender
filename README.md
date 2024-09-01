@@ -20,6 +20,9 @@ Here are the blended books you can solve:
   goes bust. This probably didn't win him any fans in the south. (810 words)
 * [The Talking-Out of Tarrington], by Saki - Clovis avoids making a new friend.
   (980 words)
+* [The Eyes Have It], by Philip K. Dick - Have we already made first contact?
+  A lighter offering from author of Minority Report and Blade Runner. (1,100
+  words)
 * [The Beggars], by Lord Dunsany - A story about joy, from one of the early
   masters of fantasy. (1,100 words)
 * [The Feast of Nemesis], by Saki - How to counteract the peace and goodwill of
@@ -30,8 +33,7 @@ Here are the blended books you can solve:
   world. Solve some of the easier stories before this one, or the challenging
   vocabulary will fill you with aeehinnopprs. (1,100 words)
 * [Beyond Lies the Wub], by Philip K. Dick - why we should be cautious with
-  alien first contact. From the author of Minority Report and Blade Runner.
-  (2,600 words)
+  alien first contact. (2,600 words)
 
 As an example, here's the first section of The Fox and The Grapes, by Aesop:
 
@@ -82,6 +84,7 @@ crossword puzzles with jigsaw puzzles. You can also find a complete list of my
 [The Beggars]: https://donkirkby.github.io/book-blender/the-beggars.pdf
 [Beyond Lies the Wub]: https://donkirkby.github.io/book-blender/beyond-lies-the-wub.pdf
 [Christmas Presents, 1914]: https://donkirkby.github.io/book-blender/christmas-presents.pdf
+[The Eyes Have It]: https://donkirkby.github.io/book-blender/the-eyes-have-it.pdf
 [The Failure of Hope & Wandel]: https://donkirkby.github.io/book-blender/failure-of-hope-and-wandel.pdf
 [The Feast of Nemesis]: https://donkirkby.github.io/book-blender/feast-of-nemesis.pdf
 [The Five Boons of Life]: https://donkirkby.github.io/book-blender/five-boons-of-life.pdf

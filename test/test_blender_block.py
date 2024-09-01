@@ -244,6 +244,7 @@ def test_heading_at_page_end_with_room():
     assert blocks[1].headings == ['', '', '', '', '']
 
 
+# noinspection DuplicatedCode
 def test_dinkus():
     text = dedent("""\
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris lacus
@@ -270,6 +271,33 @@ def test_dinkus():
     assert blocks[0].lines == expected_lines1
     assert blocks[1].lines == expected_lines2
     assert blocks[0].headings == ['', '', '', '', '* * *', '']
+
+
+# noinspection DuplicatedCode
+def test_code_block():
+    text = dedent("""\
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris lacus
+        augue, sagittis at tortor id, condimentum mollis nibh.
+
+            Donec ultricies magna vitae risus vestibulum congue. Morbi sed metus
+            nulla. Nullam ut felis non quam auctor euismod. Vestibulum ante
+            ipsum primis in faucibus orci luctus et ultrices posuere cubilia
+            curae.""")
+    expected_lines1 = ('Lorem ipsum dolor sit amet, consectetur ',
+                       'adipiscing elit. Mauris lacus augue,    ',
+                       'sagittis at tortor id, condimentum      ',
+                       'mollis nibh.                            ',
+                       '  Donec ultricies magna vitae risus     ')
+    expected_lines2 = ('  vestibulum congue. Morbi sed metus    ',
+                       '  nulla. Nullam ut felis non quam auctor',
+                       '  euismod. Vestibulum ante ipsum primis ',
+                       '  in faucibus orci luctus et ultrices   ',
+                       '  posuere cubilia curae.                ')
+    blocks = BlenderBlock.read(text)
+
+    assert len(blocks) == 2
+    assert blocks[0].lines == expected_lines1
+    assert blocks[1].lines == expected_lines2
 
 
 def test_text_style():

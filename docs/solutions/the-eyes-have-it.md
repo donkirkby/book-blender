@@ -24,7 +24,7 @@ by the author. It was at once obvious the author knew everything. Knew
 everything--and was taking it in his stride. The line (and I tremble
 remembering it even now) read:
 
-    _... his eyes slowly roved about the room._
+    ... his eyes slowly roved about the room.
 
 Vague chills assailed me. I tried to picture the eyes. Did they roll
 like dimes? The passage indicated not; they seemed to move through the
@@ -32,7 +32,7 @@ air, not over the surface. Rather rapidly, apparently. No one in the
 story was surprised. That's what tipped me off. No sign of amazement
 at such an outrageous thing. Later the matter was amplified.
 
-    _... his eyes moved from person to person._
+    ... his eyes moved from person to person.
 
 There it was in a nutshell. The eyes had clearly come apart from the
 rest of him and were on their own. My heart pounded and my breath
@@ -46,14 +46,14 @@ taking it rather _too easily_ in his stride. Evidently, he felt this
 was quite a usual thing. He made absolutely no attempt to conceal this
 knowledge. The story continued:
 
-    _... presently his eyes fastened on Julia._
+    ... presently his eyes fastened on Julia.
 
 Julia, being a lady, had at least the breeding to feel indignant. She
 is described as blushing and knitting her brows angrily. At this, I
 sighed with relief. They weren't _all_ non-Terrestrials. The narrative
 continues:
 
-    _... slowly, calmly, his eyes examined every inch of her._
+    ... slowly, calmly, his eyes examined every inch of her.
 
 Great Scott! But here the girl turned and stomped off and the matter
 ended. I lay back in my chair gasping with horror. My wife and family
@@ -65,13 +65,13 @@ I couldn't tell her. Knowledge like this was too much for the ordinary
 run-of-the-mill person. I had to keep it to myself. "Nothing," I
 gasped. I leaped up, snatched the book, and hurried out of the room.
 
-       *       *       *       *       *
+---
 
 In the garage, I continued reading. There was more. Trembling, I read
 the next revealing passage:
 
-    _... he put his arm around Julia. Presently she asked him if
-    he would remove his arm. He immediately did so, with a smile._
+    ... he put his arm around Julia. Presently she asked him if
+    he would remove his arm. He immediately did so, with a smile.
 
 It's not said what was done with the arm after the fellow had removed
 it. Maybe it was left standing upright in the corner. Maybe it was
@@ -88,8 +88,8 @@ starfish. Starfish can do the same thing, you know.
 I read on. And came to this incredible revelation, tossed off coolly
 by the author without the faintest tremor:
 
-    _... outside the movie theater we split up. Part of us went
-    inside, part over to the cafe for dinner._
+    ... outside the movie theater we split up. Part of us went
+    inside, part over to the cafe for dinner.
 
 Binary fission, obviously. Splitting in half and forming two entities.
 Probably each lower half went to the cafe, it being farther, and the
@@ -97,26 +97,26 @@ upper halves to the movies. I read on, hands shaking. I had really
 stumbled onto something here. My mind reeled as I made out this
 passage:
 
-    _... I'm afraid there's no doubt about it. Poor Bibney has
-    lost his head again._
+    ... I'm afraid there's no doubt about it. Poor Bibney has
+    lost his head again.
 
 Which was followed by:
 
-    _... and Bob says he has utterly no guts._
+    ... and Bob says he has utterly no guts.
 
 Yet Bibney got around as well as the next person. The next person,
 however, was just as strange. He was soon described as:
 
-    _... totally lacking in brains._
+    ... totally lacking in brains.
 
-       *       *       *       *       *
+---
 
 There was no doubt of the thing in the next passage. Julia, whom I had
 thought to be the one normal person, reveals herself as also being an
 alien life form, similar to the rest:
 
-    _... quite deliberately, Julia had given her heart to the
-    young man._
+    ... quite deliberately, Julia had given her heart to the
+    young man.
 
 It didn't relate what the final disposition of the organ was, but I
 didn't really care. It was evident Julia had gone right on living in
@@ -124,20 +124,20 @@ her usual manner, like all the others in the book. Without heart,
 arms, eyes, brains, viscera, dividing up in two when the occasion
 demanded. Without a qualm.
 
-    _... thereupon she gave him her hand._
+    ... thereupon she gave him her hand.
 
 I sickened. The rascal now had her hand, as well as her heart. I
 shudder to think what he's done with them, by this time.
 
-    _... he took her arm._
+    ... he took her arm.
 
 Not content to wait, he had to start dismantling her on his own.
 Flushing crimson, I slammed the book shut and leaped to my feet. But
 not in time to escape one last reference to those carefree bits of
 anatomy whose travels had originally thrown me on the track:
 
-    _... her eyes followed him all the way down the road and
-    across the meadow._
+    ... her eyes followed him all the way down the road and
+    across the meadow.
 
 I rushed from the garage and back inside the warm house, as if the
 accursed things were following me. My wife and children were playing

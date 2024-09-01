@@ -29,12 +29,18 @@ class BlenderBlockProcessor(Treeprocessor):
         self.markdown: Markdown | None = None
 
     def run(self, root):
+        descendants = []
         for child in root:
+            if child.tag == 'pre':
+                descendants.extend(child)
+            else:
+                descendants.append(child)
+        for child in descendants:
             if child.text is None and child.tag != 'hr':
                 print(repr(child))
         all_lines = []
         all_headings = []
-        for child in root:
+        for child in descendants:
             if child.tag == 'h1':
                 all_headings.append(child.text)
                 all_lines.append(' ' * self.width)
@@ -42,9 +48,14 @@ class BlenderBlockProcessor(Treeprocessor):
                 all_headings.append(DINKUS)
                 all_lines.append(' ' * self.width)
             elif child.text is not None:
+                if child.tag == 'code':
+                    prefix = '  '
+                else:
+                    prefix = ''
+                width = self.width - len(prefix)
                 text = self.normalize_text(child.text)
-                all_lines.extend(line + ' '*(self.width - len(line))
-                                 for line in wrap(text, self.width))
+                all_lines.extend(prefix + line + ' '*(width - len(line))
+                                 for line in wrap(text, width))
                 all_headings.extend([''] * (len(all_lines) - len(all_headings)))
 
         metadata = getattr(self.markdown, 'Meta', {})

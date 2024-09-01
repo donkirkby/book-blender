@@ -1,5 +1,7 @@
 To add a story, find a good, short story that's public domain.
-[Project Gutenberg] is a good place to look. Add a link definition to
+[Project Gutenberg] is a good place to look, and you can count words in an
+author's books and chapters with the `gutenberg_stats.py` script. When you find
+a story, add a link definition to
 `docs/sources.md`, but don't actually add the link anywhere in the page. Once
 you've playtested the puzzle, you'll come back and add the link.
 

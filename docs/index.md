@@ -23,7 +23,7 @@ Here are the blended books you can solve:
 * [The Talking-Out of Tarrington], by Saki - Clovis avoids making a new friend.
   (980 words)
 * [The Eyes Have It], by Philip K. Dick - Have we already made first contact?
-  A lighter offering from author of Minority Report and Blade Runner. (1,100
+  A lighter offering from the author of Minority Report and Blade Runner. (1,100
   words)
 * [The Beggars], by Lord Dunsany - A story about joy, from one of the early
   masters of fantasy. (1,100 words)

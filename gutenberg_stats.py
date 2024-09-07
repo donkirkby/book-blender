@@ -24,7 +24,8 @@ class HtmlSection:
         return HtmlSection(header_text, level)
 
     def display(self) -> str:
-        return f'{self.header} - {self.word_count} words'
+        label = 'WORDS' if 500 <= self.word_count <= 1500 else 'words'
+        return f'{self.header} - {self.word_count} {label}'
 
 
 def find_stats(html: str) -> str:
@@ -85,7 +86,7 @@ def find_links(html: str) -> list[str]:
 
 
 def main():
-    author_url = 'https://www.gutenberg.org/ebooks/author/33399'
+    author_url = 'https://www.gutenberg.org/ebooks/author/37'
     author_html = fetch_page(author_url)
     book_urls = find_links(author_html)
     for book_url in book_urls:

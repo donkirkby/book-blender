@@ -31,6 +31,8 @@ Here are the blended books you can solve:
   the holidays. (1,500 words)
 * [Luck], by Mark Twain - How a military "genius" made a name for himself.
   (1,700 words)
+* [The Funny Young Gentleman], by Charles Dickens - a Victorian gentleman plays
+  the fool to entertain his friends. Some of them even appreciate it. (1,300 words)
 * [Nyarlathotep], by H. P. Lovecraft - An ancient god returns for the end of the
   world. Solve some of the easier stories before this one, or the challenging
   vocabulary will fill you with aeehinnopprs. (1,100 words)
@@ -89,6 +91,7 @@ crossword puzzles with jigsaw puzzles. You can also find a complete list of my
 [The Eyes Have It]: the-eyes-have-it.pdf
 [The Failure of Hope & Wandel]: failure-of-hope-and-wandel.pdf
 [The Feast of Nemesis]: feast-of-nemesis.pdf
+[The Funny Young Gentleman]: the-funny-young-gentleman.pdf
 [The Five Boons of Life]: five-boons-of-life.pdf
 [The Fox and the Grapes]: fox-and-grapes.pdf
 [Luck]: luck.pdf

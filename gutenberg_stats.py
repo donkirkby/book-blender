@@ -2,9 +2,10 @@ import hashlib
 import re
 from dataclasses import dataclass
 from pathlib import Path
+from urllib.error import HTTPError
 from urllib.parse import urljoin
 from urllib.request import urlopen
-from bs4 import BeautifulSoup, Tag, PageElement
+from bs4 import BeautifulSoup, Tag
 from textstat import textstat
 
 
@@ -64,8 +65,11 @@ def fetch_page(url: str) -> str:
         return cache_path.read_text()
     except FileNotFoundError:
         pass
-    with urlopen(url) as response:
-        html = response.read().decode('utf-8')
+    try:
+        with urlopen(url) as response:
+            html = response.read().decode('utf-8')
+    except HTTPError as e:
+        raise ValueError(f"Failed to fetch page {url}.") from e
     cache_path.write_text(html)
     return html
 
@@ -81,12 +85,14 @@ def find_links(html: str) -> list[str]:
             continue
         if not re.match(r'^/ebooks/\d+$', href):
             continue
+        if link.find_all('span', 'icon_audiobook'):
+            continue
         link_urls.append(href)
     return link_urls
 
 
 def main():
-    author_url = 'https://www.gutenberg.org/ebooks/author/37'
+    author_url = 'https://www.gutenberg.org/ebooks/author/3308'
     author_html = fetch_page(author_url)
     book_urls = find_links(author_html)
     for book_url in book_urls:

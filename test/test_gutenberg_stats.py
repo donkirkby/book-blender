@@ -1,6 +1,6 @@
 from textwrap import dedent
 
-from gutenberg_stats import find_stats
+from gutenberg_stats import find_stats, find_links
 
 
 def test_h1():
@@ -113,3 +113,41 @@ def test_line_breaks():
     report = find_stats(html)
 
     assert report == expected_report
+
+
+def test_find_links():
+    html = """\
+        <p>Lorem ipsum dolores sit <a href="/ebooks/1234">amet</a>.
+        Lazy dogs often <a href="/ebooks/999">chase</a> rabbits.</p>
+    """
+    expected_links = ["/ebooks/1234", "/ebooks/999"]
+
+    urls = find_links(html)
+
+    assert urls == expected_links
+
+
+def test_find_links_skip_non_books():
+    html = """\
+        <p>Lorem ipsum dolores sit <a href="/ebooks/1234">amet</a>.
+        Lazy dogs often <a href="/other_stuff/999">chase</a> rabbits.</p>
+    """
+    expected_links = ["/ebooks/1234"]
+
+    urls = find_links(html)
+
+    assert urls == expected_links
+
+
+def test_find_links_skip_audio_books():
+    html = """\
+        <p>Lorem ipsum dolores sit <a href="/ebooks/1234">amet
+        <span class="icon foo"></span></a>.
+        Lazy dogs often <a href="/ebooks/999">chase
+        <span class="icon icon_audiobook"></span></a> rabbits.</p>
+    """
+    expected_links = ["/ebooks/1234"]
+
+    urls = find_links(html)
+
+    assert urls == expected_links

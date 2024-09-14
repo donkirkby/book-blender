@@ -5,7 +5,7 @@ from reportlab.platypus import SimpleDocTemplate
 from blender_block import BlenderBlock
 from block_pair import BlockPair
 from footer import FooterCanvas
-from live_pdf import LivePdf
+from test.live_pdf import LivePdf
 from publish import write_blocks
 from svg_diagram import SvgDiagram
 

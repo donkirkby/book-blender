@@ -4,7 +4,7 @@ from svgwrite.shapes import Rect
 
 from blender_block import BlenderBlock
 from block_pair import BlockPair
-from live_svg import LiveSvg
+from test.live_svg import LiveSvg
 
 from svg_diagram import SvgDiagram
 

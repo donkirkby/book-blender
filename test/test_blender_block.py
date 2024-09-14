@@ -5,7 +5,7 @@ from svgwrite.shapes import Rect, Line
 from svgwrite.text import Text
 
 from blender_block import BlenderBlock
-from live_svg import LiveSvg
+from test.live_svg import LiveSvg
 from svg_diagram import SvgDiagram
 
 

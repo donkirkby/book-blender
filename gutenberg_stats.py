@@ -9,6 +9,12 @@ from bs4 import BeautifulSoup, Tag
 from textstat import textstat
 
 
+def is_chapter(tag):
+    tag_classes = tag.get('class', [])
+    assert isinstance(tag_classes, list)
+    return 'chapter' in tag_classes
+
+
 @dataclass
 class HtmlSection:
     header: str
@@ -17,10 +23,14 @@ class HtmlSection:
 
     @classmethod
     def from_tag(cls, tag: Tag) -> 'HtmlSection':
-        if not tag.name.startswith('h'):
-            raise ValueError(f'Tag {tag.name} does not start with "h".')
-        level = int(tag.name[1:])
         content = ' '.join(tag.text.split())
+        if is_chapter(tag):
+            level = 1
+            content = content[:60]
+        else:
+            if not tag.name.startswith('h'):
+                raise ValueError(f'Tag {tag.name} does not start with "h".')
+            level = int(tag.name[1:])
         header_text = '#' * level + ' ' + content
         return HtmlSection(header_text, level)
 
@@ -37,7 +47,7 @@ def find_stats(html: str) -> str:
     section_stack: list[HtmlSection] = sections[:]
     for child in soup.descendants:
         if isinstance(child, Tag):
-            if re.match(r'^h\d+$', child.name):
+            if re.match(r'^h\d+$', child.name) or is_chapter(child):
                 new_section = HtmlSection.from_tag(child)
                 level = new_section.level
                 sections.append(new_section)
@@ -92,7 +102,7 @@ def find_links(html: str) -> list[str]:
 
 
 def main():
-    author_url = 'https://www.gutenberg.org/ebooks/author/3308'
+    author_url = 'https://www.gutenberg.org/ebooks/subject/1123?start_index=26'
     author_html = fetch_page(author_url)
     book_urls = find_links(author_html)
     for book_url in book_urls:

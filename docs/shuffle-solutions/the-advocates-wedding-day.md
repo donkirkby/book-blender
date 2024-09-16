@@ -1,6 +1,8 @@
 ---
 title: The Advocate's Wedding-Day
 subtitle: by Catherine Crowe
+
+
 ---
 Antoine de Chaulieu was the son of a poor gentleman of Normandy,
 with a long genealogy, a short rent-roll, and a large family. Jacques

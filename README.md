@@ -6,7 +6,10 @@ Download the puzzle's PDF and print it out.
 New blended books are announced in the [blog] and its RSS feed, and usually on
 [mastodon].
 
-Here are the blended books you can solve:
+### Sorted Words Puzzle
+There are two types of blended books for you to solve. The easiest is the sorted
+words puzzle, where you have to unsort the letters in each word to read the
+story. See the example below, then print and solve one of these:
 
 * [The Fox and the Grapes], by Aesop - The classic fable of unfulfilled desire.
   (130 words)
@@ -37,7 +40,22 @@ Here are the blended books you can solve:
 * [Beyond Lies the Wub], by Philip K. Dick - why we should be cautious with
   alien first contact. (2,600 words)
 
-As an example, here's the first section of The Fox and The Grapes, by Aesop:
+### Shuffled Pages Puzzle
+A more challenging puzzle is the shuffled pages puzzle. Print out one of these
+PDFs, and cut each page in four. Then read the pages to figure out which order
+they go in to make a sensible story. The page numbers are no longer numbers, but
+they might at least help you check your final answer.
+
+* [The Advocate's Wedding-Day], by Catherine Crowe - a guilty conscience ruins
+  success. (29 pages)
+* [The Owl's Ear], by Erckmann-Chatrian - a mountainous mystery. (21 pages)
+* [The Signal-Man], by Charles Dickens - a mysterious vision haunts a railway
+  worker. (26 pages)
+
+If you get stuck, you can check the [shuffled pages solutions].
+
+### Sorted Words Example
+Here's the first section of The Fox and The Grapes, by Aesop:
 
 [![fox-start]][fox-start]
 
@@ -98,6 +116,11 @@ crossword puzzles with jigsaw puzzles. You can also find a complete list of my
 [solutions]: https://donkirkby.github.io/book-blender/solutions
 [Four-Letter Blocks]: https://donkirkby.github.io/four-letter-blocks/
 [other projects]: https://donkirkby.github.io/
+
+[shuffled pages solutions]: https://donkirkby.github.io/book-blender/shuffle-solutions
+[The Advocate's Wedding-Day]: https://donkirkby.github.io/book-blender/the-advocates-wedding-day.pdf
+[The Owl's Ear]: https://donkirkby.github.io/book-blender/the-owls-ear.pdf
+[The Signal-Man]: https://donkirkby.github.io/book-blender/the-signal-man.pdf
 
 Story and image sources are listed on the [sources page].
 

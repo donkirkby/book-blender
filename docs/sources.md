@@ -3,7 +3,7 @@ title: Sources
 ---
 
 All the stories are in the public domain. Here are the sources I copied them
-from:
+from for the sorted word puzzles:
 
 * [The Beggars] by Lord Dunsany
 * [Beyond Lies the Wub] by Philip K. Dick
@@ -17,6 +17,11 @@ from:
 * [Luck] by Mark Twain
 * [Nyarlathotep] by H.P. Lovecraft
 * [The Talking-Out of Tarrington] by Saki
+
+Here are the sources for the shuffled pages puzzles:
+* [The Advocate's Wedding-Day] by Catherine Crowe
+* [The Owl's Ear] by Erckmann-Chatrian
+* [The Signal-Man] by Charles Dickens
 
 Header photo by [robfos], and puzzle book image in blog from
 [Wikimedia commons]. Both licensed [CC-BY].
@@ -33,6 +38,10 @@ Header photo by [robfos], and puzzle book image in blog from
 [The Five Boons of Life]: https://www.gutenberg.org/cache/epub/142/pg142-images.html#link2H_4_0031
 [The Talking-Out of Tarrington]: https://www.gutenberg.org/cache/epub/3688/pg3688-images.html#talkingout
 [Luck]: https://www.libraryofshortstories.com/onlinereader/luck
+
+[The Advocate's Wedding-Day]: https://www.gutenberg.org/cache/epub/16405/pg16405-images.html#page_190
+[The Owl's Ear]: https://www.gutenberg.org/cache/epub/12758/pg12758-images.html#ear
+[The Signal-Man]: https://www.gutenberg.org/cache/epub/16405/pg16405-images.html#page_109
 
 [CC-BY]: https://creativecommons.org/licenses/by/2.0/
 [robfos]: https://flic.kr/p/dfmtLi

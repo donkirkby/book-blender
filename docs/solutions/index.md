@@ -1,5 +1,5 @@
 ---
-title: Solutions
+title: Sorted Words Solutions
 subtitle: Easy Reading
 ---
 If you've downloaded a puzzle from the [main page] and you need help or want to

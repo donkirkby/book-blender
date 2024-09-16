@@ -115,6 +115,29 @@ def test_line_breaks():
     assert report == expected_report
 
 
+def test_chapter_class():
+    html = """\
+        <p class="chapter">Foo</p>
+        <p>Lorem ipsum dolores sit amet.</p>
+        <p>Lazy dogs and quick foxes.</p>
+        <p class="chapter">Bar</p>
+        <p>It was a dark and stormy night.</p>
+        <p class="chapter">Moby Dick</p>
+        <p>Call me Ishmael.</p>
+    """
+
+    expected_report = dedent("""\
+        Total - 24 words
+        # Foo - 11 words
+        # Bar - 8 words
+        # Moby Dick - 5 words
+    """)
+
+    report = find_stats(html)
+
+    assert report == expected_report
+
+
 def test_find_links():
     html = """\
         <p>Lorem ipsum dolores sit <a href="/ebooks/1234">amet</a>.

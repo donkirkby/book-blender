@@ -102,7 +102,8 @@ def find_links(html: str) -> list[str]:
 
 
 def main():
-    author_url = 'https://www.gutenberg.org/ebooks/subject/1123?start_index=26'
+    # detective and mystery: author_url = 'https://www.gutenberg.org/ebooks/subject/1123?start_index=26'
+    author_url = 'https://www.gutenberg.org/ebooks/author/50039'
     author_html = fetch_page(author_url)
     book_urls = find_links(author_html)
     for book_url in book_urls:

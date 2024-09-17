@@ -42,6 +42,7 @@ Header photo by [robfos], and puzzle book image in blog from
 [The Advocate's Wedding-Day]: https://www.gutenberg.org/cache/epub/16405/pg16405-images.html#page_190
 [The Owl's Ear]: https://www.gutenberg.org/cache/epub/12758/pg12758-images.html#ear
 [The Signal-Man]: https://www.gutenberg.org/cache/epub/16405/pg16405-images.html#page_109
+[Tracing Train Wreckers]: https://www.gutenberg.org/cache/epub/58576/pg58576-images.html#Page_76
 
 [CC-BY]: https://creativecommons.org/licenses/by/2.0/
 [robfos]: https://flic.kr/p/dfmtLi

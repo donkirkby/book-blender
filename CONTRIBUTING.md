@@ -13,10 +13,10 @@ markdown file in `docs/solutions` or `docs/shuffle-solutions` named after the
 story. Paste the text in, and clean up the title and any headings. The title and
 author can be put in the front matter, see other files for examples.
 
-Run `publish.py`, or `shuffle_pages.py`, and print out the PDF version of the
-new story. Try to solve it.
+Run `publish.py`, and print out the PDF version of the new story. Try to solve
+it.
 
-Once you've finished solving it, decide if it's fun enough to publish. If not,
+Once you've finished solving it, decide if it's enough fun to publish. If not,
 delete the solution, the PDF, and the source.
 
 If it's enough fun to publish, clean up any errors by editing the solution and

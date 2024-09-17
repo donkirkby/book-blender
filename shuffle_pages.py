@@ -12,6 +12,7 @@ from reportlab.pdfgen.canvas import Canvas
 from reportlab.platypus import Paragraph
 
 from font_set import register_fonts
+from publisher import Publisher
 from quote_reader import find_quote_by_length
 
 
@@ -79,8 +80,7 @@ def draw_title_page(metadata: dict[str, list[str]],
                              'https://donkirkby.github.io/book-blender')
 
 
-def shuffle_pages(source_path: Path, dest_path: Path):
-    markdown_source = source_path.read_text(encoding="utf-8")
+def shuffle_pages(markdown_source: str, dest_path: Path) -> str:
     markdown_paragraphs = markdown_source.split("\n\n")
     meta_extension = MetaExtension()
     random.seed(len(markdown_source))
@@ -182,7 +182,7 @@ def shuffle_pages(source_path: Path, dest_path: Path):
                                    y + (vertical_margin - body_style.leading)/3,
                                    title)
     canvas.save()
-    print(f'Saved as a {total_page_count} page PDF.')
+    return f'{total_page_count} pages'
 
 
 def split_panels(pdf_paragraphs, panel_height) -> list[StoryPanel]:
@@ -221,10 +221,20 @@ def split_panels(pdf_paragraphs, panel_height) -> list[StoryPanel]:
     return panels
 
 
+class ShuffledPagesPublisher(Publisher):
+    def __init__(self):
+        super().__init__()
+        self.books_path = self.project_path / 'docs' / 'shuffle-solutions'
+
+    def write(self, source: str, out_path: Path) -> None:
+        self.content_summary = shuffle_pages(source, out_path)
+
+
 def main():
-    dest_path = Path('docs/the-signal-man.pdf')
-    shuffle_pages(Path('docs/shuffle-solutions/the-signal-man.md'),
-                  dest_path)
+    source_path = Path('docs/shuffle-solutions/tracing-train-wreckers.md')
+    dest_path = Path('docs/tracing-train-wreckers.pdf')
+    markdown_source = source_path.read_text(encoding="utf-8")
+    shuffle_pages(markdown_source, dest_path)
     if __name__ == '__live_coding__':
         from test.live_pdf import LivePdf
 

@@ -41,10 +41,12 @@ story. See the example below, then print and solve one of these:
   alien first contact. (2,600 words)
 
 ### Shuffled Pages Puzzle
-A more challenging puzzle is the shuffled pages puzzle. Print out one of these
-PDFs, and cut each page in four. Then read the pages to figure out which order
-they go in to make a sensible story. The page numbers are no longer numbers, but
-they might at least help you check your final answer.
+A more challenging puzzle is the shuffled pages puzzle. It was inspired by
+[Cain's Jawbone], but intended to be solvable in a few minutes instead of a few
+months. Print out one of these PDFs, and cut each page in four. Then read the
+pages to figure out which order they go in to make a sensible story. The page
+numbers are no longer numbers, but they might at least help you check your final
+answer.
 
 * [The Advocate's Wedding-Day], by Catherine Crowe - a guilty conscience ruins
   success. (29 pages)
@@ -117,6 +119,7 @@ crossword puzzles with jigsaw puzzles. You can also find a complete list of my
 [Four-Letter Blocks]: https://donkirkby.github.io/four-letter-blocks/
 [other projects]: https://donkirkby.github.io/
 
+[Cain's Jawbone]: https://en.wikipedia.org/wiki/Cain%27s_Jawbone
 [shuffled pages solutions]: https://donkirkby.github.io/book-blender/shuffle-solutions
 [The Advocate's Wedding-Day]: https://donkirkby.github.io/book-blender/the-advocates-wedding-day.pdf
 [The Owl's Ear]: https://donkirkby.github.io/book-blender/the-owls-ear.pdf

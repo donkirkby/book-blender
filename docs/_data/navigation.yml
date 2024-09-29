@@ -1,8 +1,6 @@
 - name: Solutions
   link: /solutions/
   dropdown:
-  - name: The Advocate's Wedding-Day
-    link: /shuffle-solutions/the-advocates-wedding-day.html
   - name: The Beggars, by Lord Dunsany
     link: /solutions/the-beggars.html
   - name: Beyond Lies the Wub
@@ -25,12 +23,19 @@
     link: /solutions/luck.html
   - name: Nyarlathotep, by H.P. Lovecraft
     link: /solutions/nyarlathotep.html
-  - name: The Owl's Ear
-    link: /shuffle-solutions/the-owls-ear.html
-  - name: The Signal-Man
-    link: /shuffle-solutions/the-signal-man.html
   - name: The Talking-Out of Tarrington, by Saki
     link: /solutions/the-talking-out-of-tarrington.html
+
+  - name: <b>Shuffled Pages</b>
+    link: /shuffle-solutions
+  - name: The Advocate's Wedding-Day
+    link: /shuffle-solutions/the-advocates-wedding-day.html
+  - name: The Owl's Ear
+    link: /shuffle-solutions/the-owls-ear.html
+  - name: The Shadows on the Wall
+    link: /shuffle-solutions/the-shadows-on-the-wall.html
+  - name: The Signal-Man
+    link: /shuffle-solutions/the-signal-man.html
 - name: Blog
   link: /blog
 - name: GitHub

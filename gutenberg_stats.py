@@ -102,8 +102,15 @@ def find_links(html: str) -> list[str]:
 
 
 def main():
-    # detective and mystery: author_url = 'https://www.gutenberg.org/ebooks/subject/1123?start_index=26'
-    author_url = 'https://www.gutenberg.org/ebooks/author/50039'
+    """ URLs that have been tried:
+    https://www.gutenberg.org/ebooks/subject/1123?start_index=26
+    detective and mystery stories, world's best, Owl's Ear and others
+    https://www.gutenberg.org/ebooks/author/50039
+    Thomas Furlong, police blotter style
+    https://www.gutenberg.org/ebooks/author/183
+    Mary Roberts Rinehart
+    """
+    author_url = 'https://www.gutenberg.org/ebooks/author/5882'  # W. F. Harvey
     author_html = fetch_page(author_url)
     book_urls = find_links(author_html)
     for book_url in book_urls:

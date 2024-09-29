@@ -24,7 +24,7 @@ regenerating the PDF. Then add the story in these places:
 1. `README.md`
 2. `docs/index.md` - Compare it to `README.md`.
 3. `_posts/YYYY-MM-DD-title.md` - Copy description from `README.md`.
-4. `docs/solutions/index.md` or `docs/shuffle-solutions`
+4. `docs/solutions/index.md` or `docs/shuffle-solutions/index.md`
 5. `docs/sources.md`
 6. `docs/_data/navigation.yml`
 7. Mastodon - use the #WordGame and #puzzle hashtags, as well as an author

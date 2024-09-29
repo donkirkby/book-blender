@@ -53,6 +53,8 @@ answer.
 * [The Advocate's Wedding-Day], by Catherine Crowe - a guilty conscience ruins
   success. (29 pages)
 * [The Owl's Ear], by Erckmann-Chatrian - a mountainous mystery. (21 pages)
+* [The Shadows on the Wall], by Mary E. Wilkins Freeman - a ghost story that's
+  only slightly creepy. (23 pages)
 * [The Signal-Man], by Charles Dickens - a mysterious vision haunts a railway
   worker. (26 pages)
 
@@ -125,6 +127,7 @@ crossword puzzles with jigsaw puzzles. You can also find a complete list of my
 [shuffled pages solutions]: shuffle-solutions
 [The Advocate's Wedding-Day]: the-advocates-wedding-day.pdf
 [The Owl's Ear]: the-owls-ear.pdf
+[The Shadows on the Wall]: the-shadows-on-the-wall.pdf
 [The Signal-Man]: the-signal-man.pdf
 
 Story and image sources are listed on the [sources page].

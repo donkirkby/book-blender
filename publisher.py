@@ -40,7 +40,11 @@ class Publisher:
             self.content_summary = f'{word_count} words'
 
             if is_changed:
-                is_changed = self.generate(source, out_path)
+                try:
+                    is_changed = self.generate(source, out_path)
+                except Exception as e:
+                    msg = f"Failed to generate from {in_path}."
+                    raise RuntimeError(msg) from e
             if not is_changed:
                 action = 'skipped'
             else:

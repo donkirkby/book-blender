@@ -133,10 +133,16 @@ def shuffle_pages(markdown_source: str, dest_path: Path) -> str:
     for paragraph in pdf_paragraphs:
         paragraph.canv = canvas
         paragraph.wrap(panel_width, panel_height)
-        paragraph_pieces = paragraph.split(panel_width, panel_height)
-        for piece_index, paragraph_piece in enumerate(paragraph_pieces):
-            paragraph_piece.wrap(panel_width, panel_height)
-            split_paragraphs.append(paragraph_piece)
+        paragraph_pieces = [paragraph]
+        while paragraph_pieces:
+            paragraph_pieces = paragraph_pieces[0].split(panel_width,
+                                                         panel_height)
+            if not paragraph_pieces:
+                break
+            first_piece = paragraph_pieces.pop(0)
+            first_piece.wrap(panel_width, panel_height)
+            split_paragraphs.append(first_piece)
+
     panels = split_panels(split_paragraphs, panel_height)
     story_page_count = len(panels)
     total_page_count = story_page_count + 1  # Includes title page.
@@ -206,7 +212,7 @@ def split_panels(pdf_paragraphs, panel_height) -> list[StoryPanel]:
                             min(this_height, next_height))
             last_paragraph_height = panel.paragraphs[-1].height
             if last_paragraph_height + next_height > panel_height:
-                next_diff = panel_height
+                next_diff = panel_height * 1000
             else:
                 this_height2 = this_height - last_paragraph_height
                 next_height2 = next_height + last_paragraph_height
@@ -231,14 +237,14 @@ class ShuffledPagesPublisher(Publisher):
 
 
 def main():
-    source_path = Path('docs/shuffle-solutions/tracing-train-wreckers.md')
-    dest_path = Path('docs/tracing-train-wreckers.pdf')
+    source_path = Path('docs/shuffle-solutions/the-mass-of-shadows.md')
+    dest_path = Path('docs/the-mass-of-shadows.pdf')
     markdown_source = source_path.read_text(encoding="utf-8")
     shuffle_pages(markdown_source, dest_path)
     if __name__ == '__live_coding__':
         from test.live_pdf import LivePdf
 
-        LivePdf(dest_path, dpi=72).display()
+        LivePdf(dest_path, dpi=72).display((-300, 400))
 
 
 if __name__ in ('__main__', '__live_coding__'):

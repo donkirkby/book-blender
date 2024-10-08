@@ -1,5 +1,6 @@
 import random
 from dataclasses import dataclass
+from itertools import product
 from pathlib import Path
 
 from markdown import Markdown
@@ -12,6 +13,7 @@ from reportlab.pdfgen.canvas import Canvas
 from reportlab.platypus import Paragraph
 
 from font_set import register_fonts
+from padded_paragraph import PaddedParagraph
 from publisher import Publisher
 from quote_reader import find_quote_by_length
 
@@ -80,6 +82,94 @@ def draw_title_page(metadata: dict[str, list[str]],
                              'https://donkirkby.github.io/book-blender')
 
 
+def pop_panel(paragraphs: list[PaddedParagraph],
+              avail_width: int,
+              avail_height: int) -> StoryPanel:
+    """ Create a panel with the first set of paragraphs from a list.
+
+    Choose the extra padding for each paragraph that breaks the panel at the end
+    of a sentence, if possible. If it has to use fewer lines, it will leave up
+    to 10% of the lines unused. If more than one option is available, choose the
+    one that uses the most lines. If there is a tie, choose the one where the
+    maximum extra padding is smallest.
+
+    :param paragraphs: list of paragraphs to group into a panel. The ones that
+        are used have been popped of the start of the list. If the last one used
+        had to be split, then the unused portion is inserted back to the start
+        of the list.
+    :param avail_width: width to fit the panel in
+    :param avail_height: height to fit the panel in
+    :return: A StoryPanel with the paragraphs added. They have all had their
+        extra padding set, and been wrapped.
+    """
+    avail_width = round(avail_width)
+    avail_height = round(avail_height)
+    max_lines = avail_height // round(paragraphs[0].style.leading) - 6
+    min_lines = max_lines * 9 // 10
+    active_paragraphs = []
+    remaining_lines = max_lines
+    while remaining_lines > 0 and paragraphs:
+        paragraph = paragraphs.pop(0)
+        if not paragraph.all_line_endings:
+            paragraph.find_all_line_endings(avail_width)
+        paragraph_min_lines = len(paragraph.all_line_endings[0][1])
+        remaining_lines -= paragraph_min_lines
+        active_paragraphs.append(paragraph)
+    active_line_endings = [paragraph.all_line_endings
+                           for paragraph in active_paragraphs]
+    best_score: tuple[bool, int, int] = (False, -max_lines, 0)
+    best_choices = None
+    for padding_choices in product(*active_line_endings):
+        all_line_endings = ''.join(
+            line_endings
+            for extra_padding, line_endings in padding_choices)
+        total_line_count = len(all_line_endings)
+        line_count = total_line_count
+        is_clean_break = True
+        if total_line_count > max_lines:
+            is_clean_break = False
+            for line_count in reversed(range(min_lines, max_lines + 1)):
+                if all_line_endings[line_count-1] == '.':
+                    is_clean_break = True
+                    break
+        unused_lines = max_lines - line_count
+        score: tuple[bool, int, int] = (is_clean_break, -unused_lines, max(
+            extra_padding
+            for extra_padding, line_endings in padding_choices))
+        # noinspection PyTypeChecker
+        if score > best_score:
+            best_score = score
+            best_choices = padding_choices
+    _, unused_lines, _ = best_score
+    assert best_choices is not None
+    panel_paragraphs = []
+    inserted_count = 0
+    remaining_lines = max_lines - unused_lines
+    for (extra_padding, line_endings), paragraph in zip(best_choices,
+                                                        active_paragraphs):
+        if remaining_lines <= 0:
+            # Put it back for the next panel.
+            paragraphs.insert(inserted_count, paragraph)
+            inserted_count += 1
+            continue
+        paragraph.extra_padding = extra_padding
+        paragraph.wrap(avail_width, avail_height)
+        remaining_lines -= len(line_endings)
+        avail_height -= paragraph.height
+        if remaining_lines >= 0:
+            panel_paragraphs.append(paragraph)
+            continue
+        used_lines = len(line_endings) + remaining_lines
+        avail_height = paragraph.style.leading * used_lines
+        pieces = paragraph.split(avail_width, avail_height+1)
+        pieces[0].wrap(avail_width, avail_height)
+        paragraphs.insert(inserted_count, pieces[1])
+        inserted_count += 1
+        panel_paragraphs.append(pieces[0])
+
+    return StoryPanel(panel_paragraphs)
+
+
 def shuffle_pages(markdown_source: str, dest_path: Path) -> str:
     markdown_paragraphs = markdown_source.split("\n\n")
     meta_extension = MetaExtension()
@@ -101,7 +191,8 @@ def shuffle_pages(markdown_source: str, dest_path: Path) -> str:
     body_style: ParagraphStyle = styles['BodyText']  # or Normal?
     body_style.alignment = TA_JUSTIFY
     # noinspection PyUnresolvedReferences
-    body_style.firstLineIndent = body_style.fontSize
+    # body_style.firstLineIndent = body_style.fontSize
+    body_style.allowOrphans = True
 
     converter = Markdown(extensions=[meta_extension])
 
@@ -109,9 +200,12 @@ def shuffle_pages(markdown_source: str, dest_path: Path) -> str:
     pdf_paragraphs = []
     for markdown_paragraph in markdown_paragraphs:
         html_paragraph = converter.convert(markdown_paragraph)
+        if not html_paragraph:
+            continue
         metadata.update(converter.Meta)  # type: ignore
-        pdf_paragraph = Paragraph(html_paragraph, style=body_style)
+        pdf_paragraph = PaddedParagraph(html_paragraph, style=body_style)
         pdf_paragraphs.append(pdf_paragraph)
+
     pagesize = pagesizes.letter
     canvas = Canvas(str(dest_path), pagesize)
     canvas.setTitle('Shuffled Pages')
@@ -126,24 +220,11 @@ def shuffle_pages(markdown_source: str, dest_path: Path) -> str:
     side_margin = 0.5 * inch
     panel_width = full_width / 2 - side_margin * 2
     panel_height = full_height / 2 - vertical_margin * 2
+    panels = split_panels(pdf_paragraphs, panel_width, panel_height)
     # canvas.drawBoundary('black',
     #                     0, vertical_margin*2 + panel_height,
     #                     panel_width+2*side_margin, panel_height+2*vertical_margin)
-    split_paragraphs = []
-    for paragraph in pdf_paragraphs:
-        paragraph.canv = canvas
-        paragraph.wrap(panel_width, panel_height)
-        paragraph_pieces = [paragraph]
-        while paragraph_pieces:
-            paragraph_pieces = paragraph_pieces[0].split(panel_width,
-                                                         panel_height)
-            if not paragraph_pieces:
-                break
-            first_piece = paragraph_pieces.pop(0)
-            first_piece.wrap(panel_width, panel_height)
-            split_paragraphs.append(first_piece)
 
-    panels = split_panels(split_paragraphs, panel_height)
     story_page_count = len(panels)
     total_page_count = story_page_count + 1  # Includes title page.
     quote = find_quote_by_length(story_page_count)
@@ -191,39 +272,10 @@ def shuffle_pages(markdown_source: str, dest_path: Path) -> str:
     return f'{total_page_count} pages'
 
 
-def split_panels(pdf_paragraphs, panel_height) -> list[StoryPanel]:
-    remaining_height = 0
-    panels: list[StoryPanel] = []
-    for paragraph in pdf_paragraphs:
-        if paragraph.height <= remaining_height:
-            panels[-1].paragraphs.append(paragraph)
-        else:
-            panels.append(StoryPanel(paragraphs=[paragraph]))
-            remaining_height = panel_height
-        remaining_height -= paragraph.height
-    while True:
-        has_changed = False
-        panel: StoryPanel
-        next_panel: StoryPanel
-        for panel, next_panel in zip(panels[:-1], panels[1:]):
-            this_height = panel.height
-            next_height = next_panel.height
-            current_diff = (max(this_height, next_height) -
-                            min(this_height, next_height))
-            last_paragraph_height = panel.paragraphs[-1].height
-            if last_paragraph_height + next_height > panel_height:
-                next_diff = panel_height * 1000
-            else:
-                this_height2 = this_height - last_paragraph_height
-                next_height2 = next_height + last_paragraph_height
-                next_diff = (max(this_height2, next_height2) -
-                             min(this_height2, next_height2))
-            if next_diff < current_diff:
-                next_panel.paragraphs.insert(0, panel.paragraphs.pop())
-                has_changed = True
-        if not has_changed:
-            break
-
+def split_panels(pdf_paragraphs, panel_width, panel_height):
+    panels = []
+    while pdf_paragraphs:
+        panels.append(pop_panel(pdf_paragraphs, panel_width, panel_height))
     return panels
 
 
@@ -237,14 +289,14 @@ class ShuffledPagesPublisher(Publisher):
 
 
 def main():
-    source_path = Path('docs/shuffle-solutions/the-mass-of-shadows.md')
-    dest_path = Path('docs/the-mass-of-shadows.pdf')
+    source_path = Path('docs/shuffle-solutions/the-signal-man.md')
+    dest_path = Path('docs/the-signal-man.pdf')
     markdown_source = source_path.read_text(encoding="utf-8")
     shuffle_pages(markdown_source, dest_path)
     if __name__ == '__live_coding__':
         from test.live_pdf import LivePdf
 
-        LivePdf(dest_path, dpi=72).display((-300, 400))
+        LivePdf(dest_path, dpi=72, page=7).display((-300, 400))
 
 
 if __name__ in ('__main__', '__live_coding__'):

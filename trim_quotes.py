@@ -32,6 +32,12 @@ def main():
     for i, row in enumerate(reader):
         if __name__ == '__live_coding__' and i > 10:
             break
+
+        category_text = row['category']
+        comma_count = sum(c == ',' for c in category_text)
+        if comma_count != len(category_text.split()) - 1:
+            # Probably missing quotes around text with commas. Skip it.
+            continue
         quote = row['quote']
         letters = re.sub('[^A-Z]', '', quote.upper())
         letter_count = len(letters)
@@ -47,7 +53,7 @@ def main():
         writer.writerow(row)
         length_counts[letter_count] += 1
         author_counts[author] += 1
-        categories = re.split(r'\s*,\s*', row['category'])
+        categories = re.split(r'\s*,\s*', category_text)
         for category in categories:
             category_counts[category] += 1
 

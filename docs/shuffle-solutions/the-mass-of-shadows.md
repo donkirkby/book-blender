@@ -1,6 +1,7 @@
 ---
 title: The Mass of Shadows
 subtitle: by Anatole France
+---
 
 This tale the sacristan of the church of St. Eulalie at Neuville
 d'Aumont told me, as we sat under the arbor of the White Horse, one fine

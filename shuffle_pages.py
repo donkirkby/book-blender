@@ -1,6 +1,5 @@
 import random
 from dataclasses import dataclass
-from itertools import product
 from pathlib import Path
 
 from markdown import Markdown
@@ -87,11 +86,12 @@ def pop_panel(paragraphs: list[PaddedParagraph],
               avail_height: int) -> StoryPanel:
     """ Create a panel with the first set of paragraphs from a list.
 
-    Choose the extra padding for each paragraph that breaks the panel at the end
-    of a sentence, if possible. If it has to use fewer lines, it will leave up
-    to 10% of the lines unused. If more than one option is available, choose the
-    one that uses the most lines. If there is a tie, choose the one where the
-    maximum extra padding is smallest.
+    Use as many paragraphs as will fit using normal justification. If this uses
+    less than half a page, then split the next paragraph. Try to find extra
+    padding that lets that split occur on a sentence boundary.
+    If more than one option breaks below half the page, use the one with the
+    least extra padding. If there's a tie, use the one that breaks lowest on the
+    page.
 
     :param paragraphs: list of paragraphs to group into a panel. The ones that
         are used have been popped of the start of the list. If the last one used
@@ -104,68 +104,41 @@ def pop_panel(paragraphs: list[PaddedParagraph],
     """
     avail_width = round(avail_width)
     avail_height = round(avail_height)
-    max_lines = avail_height // round(paragraphs[0].style.leading) - 6
-    min_lines = max_lines * 9 // 10
-    active_paragraphs = []
-    remaining_lines = max_lines
-    while remaining_lines > 0 and paragraphs:
+    used_height = 0
+    panel_paragraphs = []
+    while paragraphs:
+        paragraph = paragraphs[0]
+        paragraph.wrap(avail_width, avail_height)
+        if used_height + paragraph.height > avail_height:
+            break
+        paragraphs.pop(0)
+        panel_paragraphs.append(paragraph)
+        used_height += paragraph.height
+    if paragraphs and used_height < avail_height / 2:
+        leading = paragraphs[0].style.leading
+        max_lines = int((avail_height - used_height) / leading)
+        min_lines = round((avail_height / 2 - used_height) / leading)
         paragraph = paragraphs.pop(0)
         if not paragraph.all_line_endings:
             paragraph.find_all_line_endings(avail_width)
-        paragraph_min_lines = len(paragraph.all_line_endings[0][1])
-        remaining_lines -= paragraph_min_lines
-        active_paragraphs.append(paragraph)
-    active_line_endings = [paragraph.all_line_endings
-                           for paragraph in active_paragraphs]
-    best_score: tuple[bool, int, int] = (False, -max_lines, 0)
-    best_choices = None
-    for padding_choices in product(*active_line_endings):
-        all_line_endings = ''.join(
-            line_endings
-            for extra_padding, line_endings in padding_choices)
-        total_line_count = len(all_line_endings)
-        line_count = total_line_count
-        is_clean_break = True
-        if total_line_count > max_lines:
-            is_clean_break = False
-            for line_count in reversed(range(min_lines, max_lines + 1)):
-                if all_line_endings[line_count-1] == '.':
-                    is_clean_break = True
-                    break
-        unused_lines = max_lines - line_count
-        score: tuple[bool, int, int] = (is_clean_break, -unused_lines, max(
-            extra_padding
-            for extra_padding, line_endings in padding_choices))
-        # noinspection PyTypeChecker
-        if score > best_score:
-            best_score = score
-            best_choices = padding_choices
-    _, unused_lines, _ = best_score
-    assert best_choices is not None
-    panel_paragraphs = []
-    inserted_count = 0
-    remaining_lines = max_lines - unused_lines
-    for (extra_padding, line_endings), paragraph in zip(best_choices,
-                                                        active_paragraphs):
-        if remaining_lines <= 0:
-            # Put it back for the next panel.
-            paragraphs.insert(inserted_count, paragraph)
-            inserted_count += 1
-            continue
-        paragraph.extra_padding = extra_padding
-        paragraph.wrap(avail_width, avail_height)
-        remaining_lines -= len(line_endings)
-        avail_height -= paragraph.height
-        if remaining_lines >= 0:
-            panel_paragraphs.append(paragraph)
-            continue
-        used_lines = len(line_endings) + remaining_lines
-        avail_height = paragraph.style.leading * used_lines
-        pieces = paragraph.split(avail_width, avail_height+1)
+        all_line_endings = paragraph.all_line_endings
+        best_padding = 0
+        split_height = avail_height - used_height
+        for padding, line_endings in all_line_endings:
+            breakable_line_endings = line_endings[min_lines-1:max_lines]
+            last_break = breakable_line_endings.rfind('.')
+            if last_break < 0:
+                continue
+            best_padding = padding
+            split_height = leading * (last_break + min_lines) + 1
+            break
+        paragraph.extra_padding = best_padding
+        paragraph.wrap(avail_width, split_height)
+        pieces = paragraph.split(avail_width, split_height)
         pieces[0].wrap(avail_width, avail_height)
-        paragraphs.insert(inserted_count, pieces[1])
-        inserted_count += 1
         panel_paragraphs.append(pieces[0])
+        pieces[1].extra_padding = 0
+        paragraphs.insert(0, pieces[1])
 
     return StoryPanel(panel_paragraphs)
 
@@ -200,9 +173,9 @@ def shuffle_pages(markdown_source: str, dest_path: Path) -> str:
     pdf_paragraphs = []
     for markdown_paragraph in markdown_paragraphs:
         html_paragraph = converter.convert(markdown_paragraph)
+        metadata.update(converter.Meta)  # type: ignore
         if not html_paragraph:
             continue
-        metadata.update(converter.Meta)  # type: ignore
         pdf_paragraph = PaddedParagraph(html_paragraph, style=body_style)
         pdf_paragraphs.append(pdf_paragraph)
 

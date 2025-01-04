@@ -35,7 +35,12 @@ class HtmlSection:
         return HtmlSection(header_text, level)
 
     def display(self) -> str:
-        label = 'WORDS' if 500 <= self.word_count <= 1500 else 'words'
+        if 1000 <= self.word_count < 3000:
+            label = 'WORDS^'
+        elif 3000 <= self.word_count < 6000:
+            label = 'WORDS!'
+        else:
+            label = 'words'
         return f'{self.header} - {self.word_count} {label}'
 
 
@@ -109,8 +114,12 @@ def main():
     Thomas Furlong, police blotter style
     https://www.gutenberg.org/ebooks/author/183
     Mary Roberts Rinehart
+    https://www.gutenberg.org/ebooks/author/5882
+    W. F. Harvey (Modern Ghost Stories anthology)
+    https://www.gutenberg.org/ebooks/author/2685
+    Lord Dunsany
     """
-    author_url = 'https://www.gutenberg.org/ebooks/author/5882'  # W. F. Harvey
+    author_url = 'https://www.gutenberg.org/ebooks/author/5882'
     author_html = fetch_page(author_url)
     book_urls = find_links(author_html)
     for book_url in book_urls:

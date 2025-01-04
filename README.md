@@ -50,6 +50,7 @@ answer.
 
 * [The Advocate's Wedding-Day], by Catherine Crowe - a guilty conscience ruins
   success. (29 pages)
+* [The Mass of Shadows], by Anatole France - a creepy church story. (12 pages)
 * [The Owl's Ear], by Erckmann-Chatrian - a mountainous mystery. (21 pages)
 * [The Shadows on the Wall], by Mary E. Wilkins Freeman - a ghost story that's
   only slightly creepy. (23 pages)
@@ -124,6 +125,7 @@ crossword puzzles with jigsaw puzzles. You can also find a complete list of my
 [Cain's Jawbone]: https://en.wikipedia.org/wiki/Cain%27s_Jawbone
 [shuffled pages solutions]: https://donkirkby.github.io/book-blender/shuffle-solutions
 [The Advocate's Wedding-Day]: https://donkirkby.github.io/book-blender/the-advocates-wedding-day.pdf
+[The Mass of Shadows]: https://donkirkby.github.io/book-blender/the-mass-of-shadows.pdf
 [The Owl's Ear]: https://donkirkby.github.io/book-blender/the-owls-ear.pdf
 [The Shadows on the Wall]: https://donkirkby.github.io/book-blender/the-shadows-on-the-wall.pdf
 [The Signal-Man]: https://donkirkby.github.io/book-blender/the-signal-man.pdf

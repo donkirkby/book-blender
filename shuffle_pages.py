@@ -53,24 +53,32 @@ def draw_title_page(metadata: dict[str, list[str]],
     else:
         title = title_list[0]
     # noinspection PyUnresolvedReferences
-    canvas.setFont(title_style.fontName, title_style.fontSize)
-    x = full_width / 4
     y = full_height * 3 / 4
-    canvas.drawCentredString(x, y, title)
-    y -= title_style.leading
+    title_style.alignment = 1
+    title_paragraph = Paragraph(title, title_style)
+    title_paragraph.wrapOn(canvas, full_width*0.4, full_height)
+    y -= title_paragraph.height
+    title_paragraph.drawOn(canvas,
+                           (full_width/2 - title_paragraph.width) / 2,
+                           y)
     subtitle_list = metadata.get('subtitle')
     if subtitle_list:
         subtitle = subtitle_list[0]
         subtitle_style = styles['Heading2']
+        subtitle_style.alignment = 1
         # noinspection PyUnresolvedReferences
         canvas.setFont(subtitle_style.fontName, subtitle_style.fontSize)
-        canvas.drawCentredString(x, y, subtitle)
+        subtitle_paragraph = Paragraph(subtitle, subtitle_style)
+        subtitle_paragraph.wrapOn(canvas, full_width * 0.4, full_height)
+        y -= subtitle_paragraph.height + subtitle_style.leading
+        subtitle_paragraph.drawOn(canvas,
+                                  (full_width/2 - subtitle_paragraph.width) / 2,
+                                  y)
     body_style = styles['BodyText']
     introduction = Paragraph(f'''Oh no! My word processor mixed up pages
     2 to {page_count} of this book. Can you put them in the right order and
     figure out what {quote_author} did to the page numbers?''', body_style)
-    introduction.canv = canvas
-    introduction.wrap(full_width*0.4, full_height)
+    introduction.wrapOn(canvas, full_width*0.4, full_height)
     introduction.drawOn(canvas,
                         full_width * 0.05,
                         y - introduction.height - body_style.leading)
@@ -262,14 +270,14 @@ class ShuffledPagesPublisher(Publisher):
 
 
 def main():
-    source_path = Path('docs/shuffle-solutions/the-signal-man.md')
-    dest_path = Path('docs/the-signal-man.pdf')
+    source_path = Path('docs/shuffle-solutions/mazarin-stone.md')
+    dest_path = Path('docs/mazarin-stone.pdf')
     markdown_source = source_path.read_text(encoding="utf-8")
     shuffle_pages(markdown_source, dest_path)
     if __name__ == '__live_coding__':
         from test.live_pdf import LivePdf
 
-        LivePdf(dest_path, dpi=72, page=7).display((-300, 400))
+        LivePdf(dest_path, dpi=72, page=0).display((-300, 400))
 
 
 if __name__ in ('__main__', '__live_coding__'):

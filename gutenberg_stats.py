@@ -108,26 +108,34 @@ def find_links(html: str) -> list[str]:
 
 def main():
     """ URLs that have been tried:
-    https://www.gutenberg.org/ebooks/subject/1123?start_index=26
-    detective and mystery stories, world's best, Owl's Ear and others
-    https://www.gutenberg.org/ebooks/author/50039
-    Thomas Furlong, police blotter style
-    https://www.gutenberg.org/ebooks/author/183
-    Mary Roberts Rinehart
-    https://www.gutenberg.org/ebooks/author/5882
-    W. F. Harvey (Modern Ghost Stories anthology)
-    https://www.gutenberg.org/ebooks/author/2685
-    Lord Dunsany
+    https://www.gutenberg.org/ebooks/subject/1123?start_index=26 - detective and mystery stories, world's best, Owl's Ear and others
+    https://www.gutenberg.org/ebooks/author/50039 - Thomas Furlong, police blotter style
+    https://www.gutenberg.org/ebooks/author/183 - Mary Roberts Rinehart
+    https://www.gutenberg.org/ebooks/author/5882 - W. F. Harvey
+      (Modern Ghost Stories anthology, got up to At The Gate)
+    https://www.gutenberg.org/ebooks/author/2685 - Lord Dunsany
+    https://www.gutenberg.org/ebooks/author/50533 - Hemingway
+    https://www.gutenberg.org/ebooks/author/69 - A. Conan Doyle?
     """
-    author_url = 'https://www.gutenberg.org/ebooks/author/5882'
+    author_url = 'https://www.gutenberg.org/ebooks/author/69'
     author_html = fetch_page(author_url)
     book_urls = find_links(author_html)
+    bad_urls = []
     for book_url in book_urls:
         images_url = book_url + '.html.images'
-        book_html = fetch_page(urljoin(author_url, images_url))
+        try:
+            book_html = fetch_page(urljoin(author_url, images_url))
+        except ValueError:
+            bad_urls.append(urljoin(author_url, book_url))
+            continue
         stats = find_stats(book_html)
+        print(urljoin(author_url, book_url))
         print(stats)
         print()
+    if bad_urls:
+        print('Unable to fetch web version of some books:')
+        for bad_url in bad_urls:
+            print(' ', bad_url)
 
 
 if __name__ in ('__main__', '__live_coding__'):

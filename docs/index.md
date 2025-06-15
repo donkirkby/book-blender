@@ -50,6 +50,8 @@ pages to figure out which order they go in to make a sensible story. The page
 numbers are no longer numbers, but they might at least help you check your final
 answer.
 
+* [The Adventure of the Mazarin Stone], by Sir Arthur Conan Doyle - The great
+  detective chases a jewel thief. (30 pages)
 * [The Advocate's Wedding-Day], by Catherine Crowe - a guilty conscience ruins
   success. (29 pages)
 * [The Mass of Shadows], by Anatole France - a creepy church story. (12 pages)
@@ -126,6 +128,7 @@ crossword puzzles with jigsaw puzzles. You can also find a complete list of my
 
 [Cain's Jawbone]: https://en.wikipedia.org/wiki/Cain%27s_Jawbone
 [shuffled pages solutions]: shuffle-solutions
+[The Adventure of the Mazarin Stone]: mazarin-stone.pdf
 [The Advocate's Wedding-Day]: the-advocates-wedding-day.pdf
 [The Mass of Shadows]: the-mass-of-shadows.pdf
 [The Owl's Ear]: the-owls-ear.pdf

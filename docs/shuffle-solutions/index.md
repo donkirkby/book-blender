@@ -5,6 +5,7 @@ subtitle: All in Order
 If you've downloaded a puzzle from the [main page] and you need help or want to
 check your solution, you can read the unshuffled pages here:
 
+* [The Adventure of the Mazarin Stone] by Sir Arthur Conan Doyle
 * [The Advocate's Wedding-Day] by Catherine Crowe
 * [The Mass of Shadows], by Anatole France
 * [The Owl's Ear] by Erckmann-Chatrian
@@ -12,6 +13,7 @@ check your solution, you can read the unshuffled pages here:
 * [The Signal-Man] by Charles Dickens
 
 [main page]: ..
+[The Adventure of the Mazarin Stone]: mazarin-stone.md
 [The Advocate's Wedding-Day]: the-advocates-wedding-day
 [The Mass of Shadows]: the-mass-of-shadows
 [The Owl's Ear]: the-owls-ear

@@ -19,6 +19,7 @@ from for the sorted word puzzles:
 * [The Talking-Out of Tarrington] by Saki
 
 Here are the sources for the shuffled pages puzzles:
+* [The Adventure of the Mazarin Stone] by Sir Arthur Conan Doyle
 * [The Advocate's Wedding-Day] by Catherine Crowe
 * [The Mass of Shadows] by Anatole France
 * [The Owl's Ear] by Erckmann-Chatrian
@@ -28,7 +29,6 @@ Here are the sources for the shuffled pages puzzles:
 Header photo by [robfos], and puzzle book image in blog from
 [Wikimedia commons]. Both licensed [CC-BY].
 
-[At The Gate]: https://www.gutenberg.org/cache/epub/15143/pg15143-images.html#Gate
 [The Beggars]: https://www.gutenberg.org/cache/epub/57277/pg57277-images.html#Page_138
 [Beyond Lies the Wub]: https://www.gutenberg.org/cache/epub/28554/pg28554-images.html
 [The Eyes Have It]: https://www.gutenberg.org/cache/epub/31516/pg31516-images.html
@@ -42,6 +42,7 @@ Header photo by [robfos], and puzzle book image in blog from
 [The Talking-Out of Tarrington]: https://www.gutenberg.org/cache/epub/3688/pg3688-images.html#talkingout
 [Luck]: https://www.libraryofshortstories.com/onlinereader/luck
 
+[The Adventure of the Mazarin Stone]: https://www.gutenberg.org/cache/epub/69700/pg69700-images.html#chap03
 [The Advocate's Wedding-Day]: https://www.gutenberg.org/cache/epub/16405/pg16405-images.html#page_190
 [The Mass of Shadows]: https://www.gutenberg.org/ebooks/15143
 [The Owl's Ear]: https://www.gutenberg.org/cache/epub/12758/pg12758-images.html#ear

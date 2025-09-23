@@ -316,7 +316,7 @@ def test_draw(image_differ):
     sp = ' '
     nbsp = '\xa0'
     expected_drawing = Drawing(size=(380, 210))
-    grey = 'rgb(240, 240, 240)'
+    grey = 'rgb(220, 220, 220)'
     expected_drawing.add(Rect((70, 10),
                               (60, 180),
                               fill=grey))
@@ -376,7 +376,7 @@ def test_draw_unicode(image_differ):
     sp = ' '
     nbsp = '\xa0'
     expected_drawing = Drawing(size=(380, 210))
-    grey = 'rgb(240, 240, 240)'
+    grey = 'rgb(220, 220, 220)'
     expected_drawing.add(Rect((70, 10),
                               (60, 180),
                               fill=grey))

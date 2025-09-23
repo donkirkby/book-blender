@@ -14,6 +14,7 @@ from for the sorted word puzzles:
 * [The Five Boons of Life] by Mark Twain
 * [The Fox and the Grapes] by Aesop
 * [The Funny Young Gentleman] by Charles Dickens
+* [The Kiss] by Kate Chopin
 * [Luck] by Mark Twain
 * [Nyarlathotep] by H.P. Lovecraft
 * [The Talking-Out of Tarrington] by Saki
@@ -35,6 +36,7 @@ Header photo by [robfos], and puzzle book image in blog from
 [The Failure of Hope & Wandel]: https://www.gutenberg.org/cache/epub/15599/pg15599-images.html#THE_FAILURE_OF_HOPE_WANDEL
 [The Fox and the Grapes]: https://www.gutenberg.org/cache/epub/28/pg28-images.html#chap31
 [The Funny Young Gentleman]: https://www.gutenberg.org/cache/epub/882/pg882-images.html
+[The Kiss]: https://gutenberg.org/cache/epub/160/pg160-images.html#link2H_4_0049
 [Nyarlathotep]: https://www.gutenberg.org/cache/epub/30637/pg30637-images.html#Page_128
 [Christmas Presents, 1914]: https://www.gutenberg.org/cache/epub/29652/pg29652-images.html
 [The Feast of Nemesis]: https://www.libraryofshortstories.com/onlinereader/the-feast-of-nemesis

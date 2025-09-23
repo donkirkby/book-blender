@@ -27,12 +27,14 @@ def write_blocks(blocks: typing.Sequence[BlenderBlock], out_path: Path) -> None:
         else:
             subject = subtitle
 
+    story_title = blocks[0].title
+    assert story_title is not None
     doc = SimpleDocTemplate(str(out_path),
                             leftMargin=inch * 1.1,
                             rightMargin=inch * 1.1,
                             pagesize=pagesizes.letter,
                             author=author,
-                            title=blocks[0].title,
+                            title=story_title,
                             subject=subject,
                             keywords=['puzzles',
                                       'word-puzzles',
@@ -44,7 +46,7 @@ def write_blocks(blocks: typing.Sequence[BlenderBlock], out_path: Path) -> None:
 
     doc.build([SvgDiagram(BlockPair(left, right).as_svg()).to_reportlab()
                for left, right in zip_longest(blocks_iter, blocks_iter)],
-              canvasmaker=FooterCanvas)
+              canvasmaker=FooterCanvas.title_factory(story_title))
 
 
 class SortedWordsPublisher(Publisher):

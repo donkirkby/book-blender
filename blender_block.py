@@ -183,7 +183,7 @@ class BlenderBlock:
             shade_width = 5 * LETTER_WIDTH
             group.add(drawing.rect((i * LETTER_WIDTH + MARGIN, LINE_HEIGHT/2),
                                    (shade_width, self.height - LINE_HEIGHT),
-                                   fill='rgb(240, 240, 240)'))
+                                   fill='rgb(220, 220, 220)'))
 
         if self.title:
             group.add(drawing.text(self.title,

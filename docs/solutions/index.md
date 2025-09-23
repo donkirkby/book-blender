@@ -14,6 +14,7 @@ check your solution, you can read the unscrambled stories here:
 * [The Five Boons of Life] by Mark Twain
 * [The Fox and the Grapes] by Aesop
 * [The Funny Young Gentleman] by Charles Dickens
+* [The Kiss] by Kate Chopin
 * [Luck] by Mark Twain
 * [Nyarlathotep] by H.P. Lovecraft
 * [The Talking-Out of Tarrington] by Saki
@@ -28,6 +29,7 @@ check your solution, you can read the unscrambled stories here:
 [The Fox and the Grapes]: fox-and-grapes
 [The Five Boons of Life]: five-boons-of-life
 [The Funny Young Gentleman]: the-funny-young-gentleman
+[The Kiss]: the-kiss
 [The Talking-Out of Tarrington]: the-talking-out-of-tarrington
 [Luck]: luck
 [Nyarlathotep]: nyarlathotep

@@ -116,8 +116,13 @@ def main():
     https://www.gutenberg.org/ebooks/author/2685 - Lord Dunsany
     https://www.gutenberg.org/ebooks/author/50533 - Hemingway
     https://www.gutenberg.org/ebooks/author/69 - A. Conan Doyle?
+    https://www.gutenberg.org/ebooks/author/48 - Edgar Rice Burroughs
+    https://www.gutenberg.org/ebooks/search/?query=short+stories
+    https://gutenberg.org/ebooks/author/505 - Cervantes
+    https://gutenberg.org/ebooks/author/574 - Flaubert
+    https://gutenberg.org/ebooks/author/100 - Kate Chopin
     """
-    author_url = 'https://www.gutenberg.org/ebooks/author/69'
+    author_url = 'https://gutenberg.org/ebooks/author/100'
     author_html = fetch_page(author_url)
     book_urls = find_links(author_html)
     bad_urls = []

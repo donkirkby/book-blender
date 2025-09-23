@@ -12,7 +12,7 @@ from svg_diagram import SvgDiagram
 
 def test(tmp_path, image_differ):
     scale = 0.5398
-    blocks = [BlenderBlock(lines=('Lorem ipsum dolor sit amet,   ',
+    blocks = [BlenderBlock(lines=('                              ',
                                   'consectetur adipiscing elit.  ',
                                   'Mauris lacus augue, sagittis  ',
                                   'at tortor id, condimentum     ',
@@ -36,9 +36,10 @@ def test(tmp_path, image_differ):
               BlenderBlock(lines=('porttitor.Ut quis blandit     ',
                                   'justo. Nulla vel hendrerit    ',
                                   'leo, vitae vehicula est.      '),
-                           scale=scale)]
+                           scale=scale)]*3
+    blocks[0].title = 'Example'
     pairs = [BlockPair(blocks[0], blocks[1]),
-             BlockPair(blocks[2], blocks[3])]
+             BlockPair(blocks[2], blocks[3])]*3
     expected_path = tmp_path / "expected.pdf"
     expected_doc = SimpleDocTemplate(str(expected_path),
                                      leftMargin=inch * 1.1,
@@ -48,11 +49,11 @@ def test(tmp_path, image_differ):
 
     expected_doc.build([SvgDiagram(pair.as_svg()).to_reportlab()
                         for pair in pairs],
-                       canvasmaker=FooterCanvas)
-    expected_pdf = LivePdf(expected_path)
+                       canvasmaker=FooterCanvas.title_factory('Example'))
+    expected_pdf = LivePdf(expected_path, page=1)
 
     actual_path = tmp_path / "actual.pdf"
     write_blocks(blocks, actual_path)
-    actual_pdf = LivePdf(actual_path)
+    actual_pdf = LivePdf(actual_path, page=1)
 
     image_differ.assert_equal(actual_pdf, expected_pdf)

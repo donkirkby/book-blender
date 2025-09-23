@@ -23,6 +23,8 @@ story. See the example below, then print and solve one of these:
   goes bust. This probably didn't win him any fans in the south. (810 words)
 * [The Talking-Out of Tarrington], by Saki - Clovis avoids making a new friend.
   (980 words)
+* [The Kiss], by Kate Chopin - somewhere between a romcom and a comedy of
+  manners. (1,000 words)
 * [The Eyes Have It], by Philip K. Dick - Have we already made first contact?
   A lighter offering from the author of Minority Report and Blade Runner. (1,100
   words)
@@ -117,6 +119,7 @@ crossword puzzles with jigsaw puzzles. You can also find a complete list of my
 [The Funny Young Gentleman]: https://donkirkby.github.io/book-blender/the-funny-young-gentleman.pdf
 [The Five Boons of Life]: https://donkirkby.github.io/book-blender/five-boons-of-life.pdf
 [The Fox and the Grapes]: https://donkirkby.github.io/book-blender/fox-and-grapes.pdf
+[The Kiss]: https://donkirkby.github.io/book-blender/the-kiss.pdf
 [Luck]: https://donkirkby.github.io/book-blender/luck.pdf
 [Nyarlathotep]: https://donkirkby.github.io/book-blender/nyarlathotep.pdf
 [The Talking-Out of Tarrington]: https://donkirkby.github.io/book-blender/the-talking-out-of-tarrington.pdf

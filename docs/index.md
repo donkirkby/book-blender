@@ -23,6 +23,8 @@ story. See the example below, then print and solve one of these:
   (770 words)
 * [The Failure of Hope & Wandel], by Ambrose Bierce - An ambitious business plan
   goes bust. This probably didn't win him any fans in the south. (810 words)
+* [The Alarming Spread of Poetry], by P. G. Wodehouse - A warning about the
+  risks of too much poetry. (940 words)
 * [The Talking-Out of Tarrington], by Saki - Clovis avoids making a new friend.
   (980 words)
 * [The Kiss], by Kate Chopin - somewhere between a romcom and a comedy of
@@ -56,6 +58,8 @@ answer.
   detective chases a jewel thief. (30 pages)
 * [The Advocate's Wedding-Day], by Catherine Crowe - a guilty conscience ruins
   success. (29 pages)
+* [The Man Upstairs], by P. G. Wodehouse - is "Jeeves and Wooster" a romcom?
+  This story is a more standard romcom by the same author. (29 pages)
 * [The Mass of Shadows], by Anatole France - a creepy church story. (12 pages)
 * [The Owl's Ear], by Erckmann-Chatrian - a mountainous mystery. (21 pages)
 * [The Shadows on the Wall], by Mary E. Wilkins Freeman - a ghost story that's
@@ -115,6 +119,7 @@ crossword puzzles with jigsaw puzzles. You can also find a complete list of my
 [The Beggars]: the-beggars.pdf
 [Beyond Lies the Wub]: beyond-lies-the-wub.pdf
 [Christmas Presents, 1914]: christmas-presents.pdf
+[The Alarming Spread of Poetry]: the-alarming-spread-of-poetry.pdf
 [The Eyes Have It]: the-eyes-have-it.pdf
 [The Failure of Hope & Wandel]: failure-of-hope-and-wandel.pdf
 [The Feast of Nemesis]: feast-of-nemesis.pdf
@@ -133,6 +138,7 @@ crossword puzzles with jigsaw puzzles. You can also find a complete list of my
 [shuffled pages solutions]: shuffle-solutions
 [The Adventure of the Mazarin Stone]: mazarin-stone.pdf
 [The Advocate's Wedding-Day]: the-advocates-wedding-day.pdf
+[The Man Upstairs]: the-man-upstairs.pdf
 [The Mass of Shadows]: the-mass-of-shadows.pdf
 [The Owl's Ear]: the-owls-ear.pdf
 [The Shadows on the Wall]: the-shadows-on-the-wall.pdf

@@ -1,11 +1,12 @@
 import random
+import re
 from dataclasses import dataclass
 from pathlib import Path
 
 from markdown import Markdown
 from markdown.extensions.meta import MetaExtension
 from reportlab.lib import pagesizes
-from reportlab.lib.enums import TA_JUSTIFY
+from reportlab.lib.enums import TA_JUSTIFY, TA_CENTER
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.lib.units import inch
 from reportlab.pdfgen.canvas import Canvas
@@ -102,7 +103,7 @@ def pop_panel(paragraphs: list[PaddedParagraph],
     page.
 
     :param paragraphs: list of paragraphs to group into a panel. The ones that
-        are used have been popped of the start of the list. If the last one used
+        are used have been popped off the start of the list. If the last one used
         had to be split, then the unused portion is inserted back to the start
         of the list.
     :param avail_width: width to fit the panel in
@@ -174,17 +175,26 @@ def shuffle_pages(markdown_source: str, dest_path: Path) -> str:
     # noinspection PyUnresolvedReferences
     # body_style.firstLineIndent = body_style.fontSize
     body_style.allowOrphans = True
+    dingus_style = ParagraphStyle(name='Dingus',
+                                  parent=body_style,
+                                  alignment=TA_CENTER)
+    styles.add(dingus_style)
 
     converter = Markdown(extensions=[meta_extension])
 
     metadata = {}
     pdf_paragraphs = []
     for markdown_paragraph in markdown_paragraphs:
+        if re.fullmatch(r'\s*\*[*\s]*', markdown_paragraph):
+            paragraph_style = dingus_style
+        else:
+            paragraph_style = body_style
         html_paragraph = converter.convert(markdown_paragraph)
         metadata.update(converter.Meta)  # type: ignore
         if not html_paragraph:
             continue
-        pdf_paragraph = PaddedParagraph(html_paragraph, style=body_style)
+        pdf_paragraph = PaddedParagraph(html_paragraph,
+                                        style=paragraph_style)
         pdf_paragraphs.append(pdf_paragraph)
 
     pagesize = pagesizes.letter
@@ -270,8 +280,8 @@ class ShuffledPagesPublisher(Publisher):
 
 
 def main():
-    source_path = Path('docs/shuffle-solutions/mazarin-stone.md')
-    dest_path = Path('docs/mazarin-stone.pdf')
+    source_path = Path('docs/shuffle-solutions/the-man-upstairs.md')
+    dest_path = Path('docs/the-man-upstairs.pdf')
     markdown_source = source_path.read_text(encoding="utf-8")
     shuffle_pages(markdown_source, dest_path)
     if __name__ == '__live_coding__':

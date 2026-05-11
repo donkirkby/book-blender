@@ -3,6 +3,8 @@ GEM
   specs:
     addressable (2.8.6)
       public_suffix (>= 2.0.2, < 6.0)
+    base64 (0.3.0)
+    bigdecimal (4.0.1)
     bulma-clean-theme (1.0.0)
       jekyll (>= 4.3, < 5.0)
       jekyll-feed (~> 0.15)
@@ -12,13 +14,15 @@ GEM
       kramdown-parser-gfm (~> 1.1)
     colorator (1.1.0)
     concurrent-ruby (1.2.3)
+    csv (3.3.5)
     em-websocket (0.5.3)
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0)
     eventmachine (1.2.7)
     ffi (1.16.3)
     forwardable-extended (2.6.0)
-    google-protobuf (4.26.1-x86_64-linux)
+    google-protobuf (4.33.5-x86_64-linux-gnu)
+      bigdecimal
       rake (>= 13)
     http_parser.rb (0.8.0)
     i18n (1.14.5)
@@ -80,7 +84,9 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  base64 (~> 0.3.0)
   bulma-clean-theme (~> 1.0)
+  csv (~> 3.3.5)
   jekyll (~> 4.3.3)
   jekyll-paginate (~> 1.1.0)
 

@@ -121,8 +121,10 @@ def main():
     https://gutenberg.org/ebooks/author/505 - Cervantes
     https://gutenberg.org/ebooks/author/574 - Flaubert
     https://gutenberg.org/ebooks/author/100 - Kate Chopin
+    https://www.gutenberg.org/ebooks/author/730 - A. A. Milne
+    https://gutenberg.org/ebooks/author/783 - P.G. Wodehouse
     """
-    author_url = 'https://gutenberg.org/ebooks/author/100'
+    author_url = 'https://gutenberg.org/ebooks/author/783'
     author_html = fetch_page(author_url)
     book_urls = find_links(author_html)
     bad_urls = []

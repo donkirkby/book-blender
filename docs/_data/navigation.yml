@@ -1,6 +1,8 @@
 - name: Solutions
   link: /solutions/
   dropdown:
+  - name: The Alarming Spread of Poetry, by P. G. Wodehouse
+    link: /solutions/the-alarming-spread-of-poetry.html
   - name: The Beggars, by Lord Dunsany
     link: /solutions/the-beggars.html
   - name: Beyond Lies the Wub
@@ -34,6 +36,8 @@
     link: /shuffle-solutions/mazarin-stone.html
   - name: The Advocate's Wedding-Day
     link: /shuffle-solutions/the-advocates-wedding-day.html
+  - name: The Man Upstairs
+    link: /shuffle-solutions/the-man-upstairs.html
   - name: The Mass of Shadows
     link: /shuffle-solutions/the-mass-of-shadows.html
   - name: The Owl's Ear

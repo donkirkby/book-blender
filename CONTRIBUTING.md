@@ -27,7 +27,8 @@ regenerating the PDF. Then add the story in these places:
 4. `docs/solutions/index.md` or `docs/shuffle-solutions/index.md`
 5. `docs/sources.md`
 6. `docs/_data/navigation.yml`
-7. Mastodon - use the #WordGame and #puzzle hashtags, as well as an author
-   hashtag, plus the description from `README.md`.
+7. Mastodon - I added another sorted words / shuffled pages #puzzle to my Book
+   Blender collection of #WordGames. It's "Title", by #Author - description.
+   link #ShortFiction #Fun
 
 [Project Gutenberg]: https://gutenberg.org
